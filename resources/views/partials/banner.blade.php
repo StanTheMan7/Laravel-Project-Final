@@ -19,7 +19,6 @@
                 </div>
             </div>
 		</section>
-            
         @elseif(Request::url() === 'http://127.0.0.1:8000/classes')
         <section class="banner-area text-left">	
             <div class="container">

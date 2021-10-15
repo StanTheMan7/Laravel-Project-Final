@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class NewsletterSeeder extends Seeder
 {
@@ -13,6 +14,9 @@ class NewsletterSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('newsletters')->insert([
+            'title'=>'subscribe now for latest update',
+            'button'=>'submit'
+        ]);
     }
 }

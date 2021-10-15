@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,25 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-})->name('home');
-
-Route::get('/about', function () {
-    return view('pages.about');
-})->name('about-us');
-
-Route::get('/classes', function () {
-    return view('pages.classes');
-})->name('classes');
-
-Route::get('/gallery', function () {
-    return view('pages.gallery');
-})->name('gallery');
-
-Route::get('/contact', function () {
-    return view('pages.contact');
-})->name('contact');
+Route::get('/',[HomeController::class, 'index'])->name('home');
+Route::get('/about',[AboutController::class, 'index'])->name('about-us');
+Route::get('/classes', [ClasseController::class, 'index'])->name('classes');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+Route::get('/contact',[ContactController::class, 'index'])->name('contact');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -15,7 +15,7 @@
                         <h3>John laisa do</h3>
                         <ul>
                             <li><a href=" https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>  
-                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://twitter.com/"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
                             <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
                         </ul>

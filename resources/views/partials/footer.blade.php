@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="footer-text text-center">
-                        <span>Copyright &copy; <a href="#">Hastech</a> 2017. All Rights Reserved.</span>
+                        <span></span>
                     </div>
                 </div>
             </div>

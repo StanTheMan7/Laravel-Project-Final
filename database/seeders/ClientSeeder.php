@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ClientSeeder extends Seeder
 {
@@ -13,6 +14,31 @@ class ClientSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('clients')->insert([
+            [
+                'icon'=>'zmdi zmdi-quote',
+                'text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just. Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam',
+                'url'=>'img/icon/signature.png',
+                'function'=>'Co-Founder Of Company'
+            ],
+            [
+                'icon'=>'zmdi zmdi-quote',
+                'text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just. Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam',
+                'url'=>'img/icon/signature.png',
+                'function'=>'Co-Founder Of Company'
+            ],
+            [
+                'icon'=>'zmdi zmdi-quote',
+                'text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just. Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam',
+                'url'=>'img/icon/signature.png',
+                'function'=>'Co-Founder Of Company'
+            ],
+            [
+                'icon'=>'zmdi zmdi-quote',
+                'text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just. Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam',
+                'url'=>'img/icon/signature.png',
+                'function'=>'Co-Founder Of Company'
+            ]
+        ]);
     }
 }

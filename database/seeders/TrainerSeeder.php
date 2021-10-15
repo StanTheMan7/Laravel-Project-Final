@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TrainerSeeder extends Seeder
 {
@@ -13,6 +14,44 @@ class TrainerSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('trainers')->insert([
+            [
+                'url'=>'img/trainer/trainer1.jpg',
+                'name'=>'John laisa do',
+                'icon1'=>'fa fa-facebook',
+                'icon2'=>'fa fa-twitter',
+                'icon3'=>'fa fa-dribbble',
+                'icon4'=>'fa fa-pinterest',
+                'link1'=>'https://www.facebook.com/',
+                'link2'=>'https://twitter.com/',
+                'link3'=>'https://dribbble.com/',
+                'link4'=>'https://www.pinterest.com/'
+            ],
+            [
+                'url'=>'img/trainer/trainer2.jpg',
+                'name'=>'John laisa do',
+                'icon1'=>'fa fa-facebook',
+                'icon2'=>'fa fa-twitter',
+                'icon3'=>'fa fa-dribbble',
+                'icon4'=>'fa fa-pinterest',
+                'link1'=>'https://www.facebook.com/',
+                'link2'=>'https://twitter.com/',
+                'link3'=>'https://dribbble.com/',
+                'link4'=>'https://www.pinterest.com/'
+            ],
+            [
+                'url'=>'img/trainer/trainer3.jpg',
+                'name'=>'John laisa do',
+                'icon1'=>'fa fa-facebook',
+                'icon2'=>'fa fa-twitter',
+                'icon3'=>'fa fa-dribbble',
+                'icon4'=>'fa fa-pinterest',
+                'link1'=>'https://www.facebook.com/',
+                'link2'=>'https://twitter.com/',
+                'link3'=>'https://dribbble.com/',
+                'link4'=>'https://www.pinterest.com/'
+            ],
+            
+        ]);
     }
 }

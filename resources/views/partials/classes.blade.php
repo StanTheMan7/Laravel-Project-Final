@@ -68,11 +68,6 @@
                 </div>
             </div> 
         </div>
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <a class="banner-btn mt-55" href="class.html" data-text="view all classes"><span>view all classes</span></a>
-            </div>
-        </div>
     </div>
 </section>
 <!-- Class Area End -->

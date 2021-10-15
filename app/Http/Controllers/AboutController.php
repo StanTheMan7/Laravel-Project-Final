@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Client;
+use App\Models\Header;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -14,8 +16,12 @@ class AboutController extends Controller
      */
     public function index()
     {
-        //
+        $about = About::all();
+        $header = Header::all();
+        $client = Client::all();
+        return view('pages.about', compact('about', 'header', 'client'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

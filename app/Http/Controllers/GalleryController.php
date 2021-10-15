@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Gallery;
+use App\Models\Header;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
@@ -14,7 +16,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        $header = Header::all();
+        $gallery = Gallery::all();
+        $client = Client::all();
+        return view('pages.gallery', compact('header', 'gallery', 'client'));
     }
 
     /**

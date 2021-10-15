@@ -14,7 +14,8 @@ class HeaderController extends Controller
      */
     public function index()
     {
-        //
+        $header = Header::all();
+        return view('backoffice.header.all', compact('header'));
     }
 
     /**

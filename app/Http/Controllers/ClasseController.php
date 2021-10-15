@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classe;
+use App\Models\Client;
+use App\Models\Header;
 use Illuminate\Http\Request;
 
 class ClasseController extends Controller
@@ -14,7 +16,10 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        //
+        $classe = Classe::all();
+        $header = Header::all();
+        $client = Client::all();
+        return view('pages.classes' , compact('classe', 'header', 'client'));
     }
 
     /**

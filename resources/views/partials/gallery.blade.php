@@ -73,8 +73,41 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
+                    <div class="portfolio-img single-img">
+                        <img src="{{asset('img/portfolio/gal7.jpg')}}" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="{{asset('img/portfolio/gal7.jpg')}}">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
+                    <div class="portfolio-img single-img">
+                        <img src="{{asset('img/portfolio/gal8.jpg')}}" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="{{asset('img/portfolio/gal8.jpg')}}">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 grid-item cat1 cat3" style="position: absolute; left: 50%; top: 210px;">
+                    <div class="portfolio-img single-img">
+                        <img src="{{asset('img/portfolio/gal9.jpg')}}" alt="project">
+                        <div class="gallery-icon">
+                            <a class="image-popup" href="{{asset('img/portfolio/gal9.jpg')}}">
+                                <i class="zmdi zmdi-zoom-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    {{-- <div class="container">
+        {{$gallery->links()}}
+    </div> --}}
 </section>    
 <!-- Gallery Area End -->
