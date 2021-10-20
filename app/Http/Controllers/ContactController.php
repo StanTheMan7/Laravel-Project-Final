@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Contact;
+use App\Models\Footer;
 use App\Models\Header;
+use App\Models\Newsletter;
+use App\Models\Title;
+use App\Models\Tweet;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -14,12 +18,16 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexFront()
     {
         $contact = Contact::all();
         $header = Header::all();
         $client = Client::all();
-        return view('pages.contact', compact('contact', 'header', 'client'));
+        $titleDesc = Title::all();
+        $newsletter = Newsletter::all();
+        $footer = Footer::all();
+        $tweet = Tweet::all();
+        return view('pages.contact', compact('contact', 'header', 'client', 'titleDesc', 'newsletter','footer', 'tweet'));
     }
 
     /**

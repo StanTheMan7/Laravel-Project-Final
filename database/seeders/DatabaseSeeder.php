@@ -27,7 +27,9 @@ class DatabaseSeeder extends Seeder
             PricingSeeder::class,
             ClientSeeder::class,
             NewsletterSeeder::class,
-            FooterSeeder::class
+            FooterSeeder::class,
+            TweetSeeder::class,
+            UserSeeder::class
         ]);
     }
 }

@@ -1,10 +1,22 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BackgroundController;
+use App\Http\Controllers\BackofficeController;
 use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\PricingController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\TitleController;
+use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +30,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomeController::class, 'index'])->name('home');
-Route::get('/about',[AboutController::class, 'index'])->name('about-us');
-Route::get('/classes', [ClasseController::class, 'index'])->name('classes');
-Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
-Route::get('/contact',[ContactController::class, 'index'])->name('contact');
+// Routes  Front 
+Route::get('/',[HomeController::class, 'indexFront'])->name('home');
+Route::get('/about',[AboutController::class, 'indexFront'])->name('about-us');
+Route::get('/classes', [ClasseController::class, 'indexFront'])->name('classes');
+Route::get('/gallery', [GalleryController::class, 'indexFront'])->name('gallery');
+Route::get('/contact',[ContactController::class, 'indexFront'])->name('contact');
+
+// Routes Backoffice 
+Route::get('/backoffice', [BackofficeController::class, 'index'])->middleware(['auth'])->name('backoffice');
+Route::resource('/backoffice/title', TitleController::class);
+Route::resource('/backoffice/header', HeaderController::class);
+Route::resource('/backoffice/background', BackgroundController::class);
+Route::resource('/backoffice/about', AboutController::class);
+Route::resource('/backoffice/classe', ClasseController::class);
+Route::resource('/backoffice/shedule', ScheduleController::class);
+Route::resource('/backoffice/trainer', TrainerController::class);
+Route::resource('/backoffice/gallery', GalleryController::class);
+Route::resource('/backoffice/event', EventController::class);
+Route::resource('/backoffice/pricing', PricingController::class);
+Route::resource('/backoffice/client', ClientController::class);
+Route::resource('/backoffice/newsletter', NewsletterController::class);
+Route::resource('/backoffice/footer', FooterController::class);
+Route::resource('/backoffice/user', UserController::class);
+
+
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('backoffice');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

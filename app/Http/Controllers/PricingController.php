@@ -14,7 +14,8 @@ class PricingController extends Controller
      */
     public function index()
     {
-        //
+        $pricing = Pricing::all();
+        return view('backoffice.pricing.all', compact('pricing'));
     }
 
     /**
@@ -46,7 +47,7 @@ class PricingController extends Controller
      */
     public function show(Pricing $pricing)
     {
-        //
+        return view('backoffice.pricing.show', compact('pricing'));
     }
 
     /**
@@ -57,7 +58,7 @@ class PricingController extends Controller
      */
     public function edit(Pricing $pricing)
     {
-        //
+        return view('backoffice.pricing.edit', compact('pricing'));
     }
 
     /**
@@ -69,7 +70,25 @@ class PricingController extends Controller
      */
     public function update(Request $request, Pricing $pricing)
     {
-        //
+        request()->validate([
+            'package'=>['required'],
+            'price'=>['required'],
+            'month'=>['required'],
+            'gift1'=>['required'],
+            'gift2'=>['required'],
+            'gift3'=>['required'],
+            'gift4'=>['required'],
+            'button'=>['required']
+        ]);
+        $pricing->package = $request->package;
+        $pricing->price = $request->price;
+        $pricing->month = $request->month;
+        $pricing->gift1 = $request->gift1;
+        $pricing->gift2 = $request->gift2;
+        $pricing->gift3 = $request->gift3;
+        $pricing->gift4 = $request->gift4;
+        $pricing->button = $request->button;
+        $pricing->save();
     }
 
     /**
@@ -80,6 +99,7 @@ class PricingController extends Controller
      */
     public function destroy(Pricing $pricing)
     {
-        //
+        $pricing->delete();
+        return redirect()->route('pricing.index');
     }
 }

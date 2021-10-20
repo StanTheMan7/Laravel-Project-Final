@@ -4,8 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Client;
+use App\Models\Event;
+use App\Models\Footer;
 use App\Models\Header;
+use App\Models\Newsletter;
+use App\Models\Title;
+use App\Models\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
@@ -14,15 +20,26 @@ class AboutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexFront()
     {
         $about = About::all();
         $header = Header::all();
         $client = Client::all();
-        return view('pages.about', compact('about', 'header', 'client'));
+        $titleDesc = Title::all();
+        $event = Event::all();
+        $newsletter = Newsletter::all();
+        $footer = Footer::all();
+        $tweet = Tweet::all();
+        return view('pages.about', compact('about', 'header', 'client', 'titleDesc', 'event','newsletter','footer','tweet'));
     }
     
-
+    public function index()
+    {
+        $about = About::all();
+        return view('backoffice.about.all', compact('about'));
+    }
+    
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +47,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -52,7 +69,7 @@ class AboutController extends Controller
      */
     public function show(About $about)
     {
-        //
+        return view('backoffice.about.show', compact('about'));
     }
 
     /**
@@ -63,7 +80,7 @@ class AboutController extends Controller
      */
     public function edit(About $about)
     {
-        //
+        return view('backoffice.about.edit', compact('about'));
     }
 
     /**
@@ -75,7 +92,25 @@ class AboutController extends Controller
      */
     public function update(Request $request, About $about)
     {
-        //
+        request()->validate([
+            'title'=>['required'],
+            'description1'=>['required'],
+            'description2'=>['required'],
+            'video'=>['required'],
+            'button'=>['required']
+        ]);
+        $about->title = $request->title;
+        $about->description1 = $request->description1;
+        $about->description2 = $request->description2;
+        if ($request->file('url') !== null) {
+            Storage::disk("public")->delete("img/about" . $about->url);
+            $about->url= $request->file("url")->hashName();
+            $request->file("url")->storePublicly("img/about", "public");
+        }
+        $about->video = $request->video;
+        $about->button = $request->button;
+        $about->save();
+        return redirect()->route('about.index');
     }
 
     /**
@@ -86,6 +121,8 @@ class AboutController extends Controller
      */
     public function destroy(About $about)
     {
-        //
+        Storage::disk("public")->delete("img/about/" . $about->url);
+        $about->delete();
+        return redirect()->route("about.index")->with('message', 'IT WORKS message deleted');
     }
 }

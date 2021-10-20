@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Header;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HeaderController extends Controller
 {
@@ -47,7 +48,7 @@ class HeaderController extends Controller
      */
     public function show(Header $header)
     {
-        //
+        return view('backoffice.header.show',compact('header'));
     }
 
     /**
@@ -58,7 +59,7 @@ class HeaderController extends Controller
      */
     public function edit(Header $header)
     {
-        //
+        return view('backoffice.header.edit',compact('header'));
     }
 
     /**
@@ -70,7 +71,26 @@ class HeaderController extends Controller
      */
     public function update(Request $request, Header $header)
     {
-        //
+        request()->validate([
+            'li1'=>['required'],
+            'li2'=>['required'],
+            'li3'=>['required'],
+            'li4'=>['required'],
+            'li5'=>['required']
+        ]);
+        if($request->file('logo')!== null){
+
+            Storage::disk('public')->delete('img/logo' . $header->logo);
+            $header->logo = $request->file('logo')->hashName();
+            $request->file('logo')->storePublicly('img/logo', 'public');
+        }
+        $header->li1 = $request->li1;
+        $header->li2 = $request->li2;
+        $header->li3 = $request->li3;
+        $header->li4 = $request->li4;
+        $header->li5 = $request->li5;
+        $header->save();
+        return redirect()->route('header.index');
     }
 
     /**
@@ -81,6 +101,8 @@ class HeaderController extends Controller
      */
     public function destroy(Header $header)
     {
-        //
+        Storage::disk('public')->delete('img/logo' . $header->logo);
+        $header->delete();
+        return redirect()->route('header.index');
     }
 }

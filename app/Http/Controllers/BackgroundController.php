@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Background;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BackgroundController extends Controller
 {
@@ -14,6 +15,8 @@ class BackgroundController extends Controller
      */
     public function index()
     { 
+        $background = Background::all();
+        return view('backoffice.background.all', compact('background')); 
     }
 
     /**
@@ -23,7 +26,7 @@ class BackgroundController extends Controller
      */
     public function create()
     {
-        //
+        return view('backoffice.background.create');
     }
 
     /**
@@ -34,7 +37,22 @@ class BackgroundController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'title'=>['required'],
+            'bigTitle'=>['required'],
+            'description'=>['required'],
+            'url'=>['required'],
+            'button'=>['required'],
+        ]);
+        $background = new Background();
+        $background->title = $request->title;
+        $background->bigTitle = $request->bigTitle;
+        $background->description = $request->description;
+        $background->button = $request->button;
+        $background->url= $request->file("url")->hashName();
+        $request->file("url")->storePublicly("img/slider", "public");
+        $background->save();
+        return redirect()->route("background.index");
     }
 
     /**
@@ -45,7 +63,7 @@ class BackgroundController extends Controller
      */
     public function show(Background $background)
     {
-        //
+        return view('backoffice.background.show', compact('background'));
     }
 
     /**
@@ -56,7 +74,7 @@ class BackgroundController extends Controller
      */
     public function edit(Background $background)
     {
-        //
+        return view('backoffice.background.edit', compact('background'));
     }
 
     /**
@@ -68,7 +86,23 @@ class BackgroundController extends Controller
      */
     public function update(Request $request, Background $background)
     {
-        //
+        request()->validate([
+            'title'=>['required'],
+            'bigTitle'=>['required'],
+            'description'=>['required'],
+            'button'=>['required'],
+        ]);
+
+        if($request->file('url') !== null) {
+            Storage::disk('public')->delete('img/slider' . $background->url);
+            $background->url= $request->file("url")->hashName();
+            $request->file("url")->storePublicly("img/slider", "public");
+        }
+        $background->title = $request->title;
+        $background->bigTitle = $request->bigTitle;
+        $background->description = $request->description;
+        $background->save();
+        return redirect()->route("background.index");
     }
 
     /**
@@ -79,6 +113,8 @@ class BackgroundController extends Controller
      */
     public function destroy(Background $background)
     {
-        //
+        Storage::disk('public')->delete('img/' . $background->url);
+        $background->delete();
+        return redirect()->route('background.index')->with('message', 'Data succesfully deleted !!!');
     }
 }

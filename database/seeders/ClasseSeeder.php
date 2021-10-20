@@ -33,14 +33,6 @@ class ClasseSeeder extends Seeder
                 'name'=>'Sathi Bhuiya',
                 'time'=>'10.00Am-05:00Pm'
             ],   
-            [
-                'url'=>'img/class/2.jpg',
-                'title'=>'yoga for climbers',
-                'name'=>'Sathi Bhuiya',
-                'time'=>'10.00Am-05:00Pm'
-            ]
-            
-
         ]);
     }
 }

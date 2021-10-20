@@ -21,13 +21,13 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function indexFront(){
         $header = Header::all();
         $background  = Background::all();
         $about = About::all();
         $classe =  Classe::all();
         $trainer = Trainer::all();
-        $gallery = Gallery::all();
+        $gallery = Gallery::paginate(6);
         $contact = Contact::all();
         $titleDesc = Title::all();
         $event = Event::all();

@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Footer;
 use App\Models\Gallery;
 use App\Models\Header;
+use App\Models\Newsletter;
+use App\Models\Title;
+use App\Models\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -14,14 +19,22 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexFront()
     {
         $header = Header::all();
-        $gallery = Gallery::all();
+        $gallery = Gallery::paginate(9);
         $client = Client::all();
-        return view('pages.gallery', compact('header', 'gallery', 'client'));
+        $titleDesc =  Title::all();
+        $newsletter = Newsletter::all();
+        $footer = Footer::all();
+        $tweet = Tweet::all();
+        return view('pages.gallery', compact('header', 'gallery', 'client', 'titleDesc', 'newsletter','footer', 'tweet'));
     }
 
+    public function index(){
+        $gallery = Gallery::all();
+        return view('backoffice.gallery.all', compact('gallery'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +42,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backoffice.gallery.create');
     }
 
     /**
@@ -40,9 +53,17 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'url'=>['required'],
+            'icon'=>['required']
+        ]);
+        $gallery = new Gallery();
+        $gallery->url = request()->file('url')->hashName();
+        $request->file('url')->storePublicly('img/portfolio' , 'public');
+        $gallery->icon = $request->icon;
+        $gallery->save();
+        return redirect()->route('gallery.index');
     }
-
     /**
      * Display the specified resource.
      *
@@ -51,7 +72,7 @@ class GalleryController extends Controller
      */
     public function show(Gallery $gallery)
     {
-        //
+        return view('backoffice.gallery.show', compact('gallery'));
     }
 
     /**
@@ -62,7 +83,7 @@ class GalleryController extends Controller
      */
     public function edit(Gallery $gallery)
     {
-        //
+        return view('backoffice.gallery.edit', compact('gallery'));
     }
 
     /**
@@ -74,7 +95,16 @@ class GalleryController extends Controller
      */
     public function update(Request $request, Gallery $gallery)
     {
-        //
+        request()->validate([
+            'url'=>['required'],
+            'icon'=>['required']
+        ]);
+        Storage::disk('public')->delete('img/portfolio' . $gallery->url);
+        $gallery->url = request()->file('url')->hashName();
+        $request->file('url')->storePublicly('img/portfolio' , 'public');
+        $gallery->icon = $request->icon;
+        $gallery->save();
+        return redirect()->route('gallery.index');
     }
 
     /**
@@ -85,6 +115,8 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        //
+        Storage::disk('public')->delete('img/portfolio' . $gallery->url);
+        $gallery->delete();
+        return redirect()->route('gallery.index');
     }
 }

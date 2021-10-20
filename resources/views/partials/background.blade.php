@@ -1,8 +1,9 @@
 <!-- Background Area Start -->
 <div class="slider-area">	
     <div class="slider-wrapper">
+        
         @foreach ($background as $item)
-            <div class="single-slide" style="background-image: url('{{$item->url}}');">
+            <div class="single-slide" style="background-image: url('{{asset('img/slider/' . $item->url)}}');">
                 <div class="slider-content">
                     <div class="container">
                         <div class="row">

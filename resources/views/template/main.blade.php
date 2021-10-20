@@ -17,7 +17,9 @@
         <link rel="stylesheet" href="{{asset('css/shortcode/shortcodes.css')}}">
         <link rel="stylesheet" href="{{asset('css/slick.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        
         <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
     </head>
     <body>

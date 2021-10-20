@@ -45,11 +45,11 @@ class GallerySeeder extends Seeder
             ],
             [ 
                 'url'=>'img/portfolio/gal8.jpg',
-                'icon'=>''
+                'icon'=>'zmdi zmdi-zoom-in'
             ],
             [ 
                 'url'=>'img/portfolio/gal9.jpg',
-                'icon'=>''
+                'icon'=>'zmdi zmdi-zoom-in'
             ]
         ]);
     }

@@ -14,7 +14,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $event = Event::all();
+        return view('backoffice.event.all', compact('event'));
     }
 
     /**
@@ -24,7 +25,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('backoffice.event.create');
     }
 
     /**
@@ -35,7 +36,19 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'title'=>['required'],
+            'description'=>['required'],
+            'date'=>['required'],
+            'time'=>['required']
+        ]);
+        $event = new Event();
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->date = $request->date;
+        $event->time = $request->time;
+        $event->save();
+        return redirect()->route('event.index');
     }
 
     /**
@@ -46,7 +59,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return view('backoffice.event.show', compact('event'));
     }
 
     /**
@@ -57,7 +70,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('backoffice.event.edit', compact('event'));
     }
 
     /**
@@ -69,7 +82,18 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        request()->validate([
+            'title'=>['required'],
+            'description'=>['required'],
+            'date'=>['required'],
+            'time'=>['required']
+        ]);
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->date = $request->date;
+        $event->time = $request->time;
+        $event->save();
+        return redirect()->route('event.index');
     }
 
     /**
@@ -80,6 +104,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+        return redirect()->route('event.index');
     }
 }

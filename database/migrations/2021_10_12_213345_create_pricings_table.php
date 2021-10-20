@@ -17,6 +17,7 @@ class CreatePricingsTable extends Migration
             $table->id();
             $table->string('package');
             $table->string('price');
+            $table->string('month');
             $table->string('gift1');
             $table->string('gift2');
             $table->string('gift3');

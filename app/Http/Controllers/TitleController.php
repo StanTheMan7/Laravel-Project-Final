@@ -47,7 +47,7 @@ class TitleController extends Controller
      */
     public function show(Title $title)
     {
-        //
+        return view('backoffice.titleDesc.show',compact('title'));
     }
 
     /**
@@ -58,7 +58,7 @@ class TitleController extends Controller
      */
     public function edit(Title $title)
     {
-        //
+        return view('backoffice.titleDesc.edit',compact('title'));
     }
 
     /**
@@ -70,7 +70,14 @@ class TitleController extends Controller
      */
     public function update(Request $request, Title $title)
     {
-        //
+        request()->validate([
+            'title'=>['required'],
+            'description'=>['required']
+        ]);
+        $title->title = $request->title;
+        $title->description = $request->description;
+        $title->save();
+        return redirect()->route('title.index');
     }
 
     /**
@@ -81,6 +88,7 @@ class TitleController extends Controller
      */
     public function destroy(Title $title)
     {
-        //
+        $title->delete();
+        return redirect()->route('title.index');
     }
 }

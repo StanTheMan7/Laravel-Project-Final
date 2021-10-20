@@ -10,63 +10,28 @@
             </div>
         </div>
         <div class="row"> 
-            <div class="col-md-4 col-sm-6 col-xs-12">     
-                <div class="single-class">
-                    <div class="single-img">
-                        <a href="class.html"><img src="{{asset('img/class/1.jpg')}}" alt="class"></a>
-                        <div class="gallery-icon">
-                            <a class="image-popup" href="{{asset('img/class/1.jpg')}}">
-                                <i class="zmdi zmdi-zoom-in"></i>
-                            </a>   
-                        </div>
+           @foreach ($classe as $item)
+           <div class="col-md-4 col-sm-6 col-xs-12">     
+            <div class="single-class">
+                <div class="single-img">
+                    <a href="class.html"><img src="{{$item->url}}" alt="class"></a>
+                    <div class="gallery-icon">
+                        <a class="image-popup" href="{{$item->url}}">
+                            <i class="zmdi zmdi-zoom-in"></i>
+                        </a>   
                     </div>
-                    <div class="single-content">
-                        <h3><a href="class.html">yoga for climbers</a></h3>
-                        <ul>
-                            <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                            <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
-                        </ul>
-                    </div>
+                </div>
+                <div class="single-content">
+                    <h3><a href="class.html">{{$item->title}}</a></h3>
+                    <ul>
+                        <li><i class="zmdi zmdi-face"></i>{{$item->name}}</li>
+                        <li><i class="zmdi zmdi-alarm"></i>{{$item->time}}</li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">     
-                <div class="single-class">
-                    <div class="single-img">
-                        <a href="class.html"><img src="{{asset('img/class/2.jpg')}}" alt="class"></a>
-                        <div class="gallery-icon">
-                            <a class="image-popup" href="{{asset('img/class/2.jpg')}}">
-                                <i class="zmdi zmdi-zoom-in"></i>
-                            </a>   
-                        </div>
-                    </div>
-                    <div class="single-content">
-                        <h3><a href="class.html">yoga for climbers</a></h3>
-                        <ul>
-                            <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                            <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">     
-                <div class="single-class">
-                    <div class="single-img">
-                        <a href="class.html"><img src="{{asset('img/class/3.jpg')}}" alt="class"></a>
-                        <div class="gallery-icon">
-                            <a class="image-popup" href="{{asset('img/class/3.jpg')}}">
-                                <i class="zmdi zmdi-zoom-in"></i>
-                            </a>   
-                        </div>
-                    </div>
-                    <div class="single-content">
-                        <h3><a href="class.html">yoga for climbers</a></h3>
-                        <ul>
-                            <li><i class="zmdi zmdi-face"></i>Sathi Bhuiyan</li>
-                            <li><i class="zmdi zmdi-alarm"></i>10.00Am-05:00Pm</li>
-                        </ul>
-                    </div>
-                </div>
-            </div> 
+        </div>
+        @endforeach
+
         </div>
     </div>
 </section>

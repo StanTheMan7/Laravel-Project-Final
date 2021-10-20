@@ -16,7 +16,7 @@ class TrainerSeeder extends Seeder
     {
         DB::table('trainers')->insert([
             [
-                'url'=>'img/trainer/trainer1.jpg',
+                'url'=>'trainer1.jpg',
                 'name'=>'John laisa do',
                 'icon1'=>'fa fa-facebook',
                 'icon2'=>'fa fa-twitter',
@@ -28,7 +28,7 @@ class TrainerSeeder extends Seeder
                 'link4'=>'https://www.pinterest.com/'
             ],
             [
-                'url'=>'img/trainer/trainer2.jpg',
+                'url'=>'trainer2.jpg',
                 'name'=>'John laisa do',
                 'icon1'=>'fa fa-facebook',
                 'icon2'=>'fa fa-twitter',
@@ -40,7 +40,7 @@ class TrainerSeeder extends Seeder
                 'link4'=>'https://www.pinterest.com/'
             ],
             [
-                'url'=>'img/trainer/trainer3.jpg',
+                'url'=>'trainer3.jpg',
                 'name'=>'John laisa do',
                 'icon1'=>'fa fa-facebook',
                 'icon2'=>'fa fa-twitter',

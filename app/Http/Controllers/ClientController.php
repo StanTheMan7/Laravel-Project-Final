@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
@@ -14,7 +15,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        
+        $client = Client::all();
+        return view('backoffice.client.all',compact('client'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('backoffice.client.create');
     }
 
     /**
@@ -35,7 +37,19 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'icon'=>['required'],
+            'text'=>['required'],
+            'url'=>['required'],
+            'function'=>['required']
+        ]);
+        $client = new Client();
+        $client->icon = $request->icon;
+        $client->text = $request->text;
+        $client->url = $request->file('url')->hashName();
+        $request->file('url')->storePublicly('img', 'public');
+        $client->save();
+        return redirect()->route('client.index');
     }
 
     /**
@@ -46,7 +60,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        return view('backoffice.client.show',compact('client'));
     }
 
     /**
@@ -57,7 +71,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        return view('backoffice.client.edit',compact('client'));
     }
 
     /**
@@ -69,7 +83,20 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        request()->validate([
+            'icon'=>['required'],
+            'text'=>['required'],
+            'function'=>['required']
+        ]);
+        if($request->file('url') !== null){
+            Storage::disk('public')->delete('img/' . $client->url);
+            $client->url = $request->file('url')->hashName();
+            $request->file('url')->storePublicly('img', 'public');
+        }
+        $client->icon = $request->icon;
+        $client->text = $request->text;
+        $client->save();
+        return redirect()->route('client.index');
     }
 
     /**
@@ -80,6 +107,8 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        Storage::disk('public')->delete('img/' . $client->url);
+        $client->delete();
+        return redirect()->route('client.index');
     }
 }

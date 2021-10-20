@@ -23,10 +23,12 @@ class TitleSeeder extends Seeder
                 'title'=>'Class Schedule',
                 'description'=>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem"
             ],
+        
             [
                 'title'=>'our trainer',
                 'description'=>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem"
             ],
+            
             [
                 'title'=>'our gallery',
                 'description'=>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem"

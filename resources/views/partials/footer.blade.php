@@ -5,34 +5,34 @@
             <div class="row">  
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-footer-widget">
-                        <a href="index.html"><img src="{{asset('img/logo/logo.png')}}" alt="handstand"></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a convallis nulla. Ut </p>
+                        <a href="index.html"><img src="{{'img/logo/' . $header[0]->logo}}" alt="handstand"></a>
+                        <p>{{$footer[0]->text}} </p>
                         <ul>
-                            <li><i class="zmdi zmdi-email"></i> username@gmail.com</li>
-                            <li><i class="zmdi zmdi-phone"></i> (+660 256 24857)</li>
-                            <li><i class="zmdi zmdi-home"></i> Your Address Here</li>
+                            <li><i class="{{$footer[0]->icon1}}"></i>{{$footer[0]->email}}</li>
+                            <li><i class="{{$footer[0]->icon2}}"></i> {{$footer[0]->phone}}</li>
+                            <li><i class="{{$footer[0]->icon3}}"></i> {{$footer[0]->address}}</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-footer-widget">
-                        <h3>Recent Tweets</h3>
+                        <h3>{{$tweet[0]->title}}</h3>
                         <div class="single-twitt mb-10">
                             <div class="twitt-icon">
-                                <i class="zmdi zmdi-twitter"></i>
+                                <i class="{{$tweet[0]->icon4}}"></i>
                             </div>
                             <div class="twitt-content">
-                                <p>@envato good News for today!! We got  2 psd templete weekly top selling quality template in technology category !!!</p>
-                           <a href="https://twitter.com/login/">https://twitter.com/login</a>
+                                <p>{{$tweet[0]->text2}}</p>
+                           <a href="{{$tweet[0]->link1}}">{{$tweet[0]->link1}}</a>
                             </div>
                         </div>
                         <div class="single-twitt">
                             <div class="twitt-icon">
-                                <i class="zmdi zmdi-twitter"></i>
+                                <i class="{{$tweet[0]->icon5}}"></i>
                             </div>
                             <div class="twitt-content">
-                                <p>@envato good News for today!! We got  2 psd templete weekly top selling quality template in technology category !!!</p>
-                           <a href="https://twitter.com/login/">https://twitter.com/login</a>
+                                <p>{{$tweet[0]->text3}}</p>
+                           <a href="{{$tweet[0]->link2}}">{{$tweet[0]->link2}}</a>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="footer-text text-center">
-                        <span></span>
+                        <span>{{$footer[0]->copyright}}</span>
                     </div>
                 </div>
             </div>
