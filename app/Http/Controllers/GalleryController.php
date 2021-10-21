@@ -99,9 +99,11 @@ class GalleryController extends Controller
             'url'=>['required'],
             'icon'=>['required']
         ]);
-        Storage::disk('public')->delete('img/portfolio' . $gallery->url);
-        $gallery->url = request()->file('url')->hashName();
-        $request->file('url')->storePublicly('img/portfolio' , 'public');
+        if($request->file('url') !== null){
+            Storage::disk('public')->delete('img/portfolio' . $gallery->url);
+            $gallery->url = request()->file('url')->hashName();
+            $request->file('url')->storePublicly('img/portfolio' , 'public');
+        }
         $gallery->icon = $request->icon;
         $gallery->save();
         return redirect()->route('gallery.index');

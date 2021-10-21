@@ -29,6 +29,10 @@ class ContactController extends Controller
         $tweet = Tweet::all();
         return view('pages.contact', compact('contact', 'header', 'client', 'titleDesc', 'newsletter','footer', 'tweet'));
     }
+    public function index(){
+        $contact = Contact::all();
+        return view('backoffice.contact.all', compact('contact'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,7 +63,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return view('backoffice.contact.show', compact('contact'));
     }
 
     /**
@@ -70,7 +74,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('backoffice.contact.edit', compact('contact'));
     }
 
     /**
@@ -82,7 +86,18 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        request()->validate([
+            'title'=>['required'],
+            'placeholdername'=>['required'],
+            'placeholderemail'=>['required'],
+            'placeholdersubject'=>['required']
+        ]);
+        $contact->title = $request->title;
+        $contact->placeholdername = $request->placeholdername;
+        $contact->placeholderemail= $request->placeholderemail;
+        $contact->placeholdersubject = $request->placeholdersubject;
+        $contact->save();
+        return redirect()->route('contact.index');
     }
 
     /**
@@ -93,6 +108,7 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return redirect()->route('contact.index');
     }
 }

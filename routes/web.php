@@ -16,7 +16,9 @@ use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\TweetController;
 use App\Http\Controllers\UserController;
+use App\Models\Pricing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,7 +38,12 @@ Route::get('/about',[AboutController::class, 'indexFront'])->name('about-us');
 Route::get('/classes', [ClasseController::class, 'indexFront'])->name('classes');
 Route::get('/gallery', [GalleryController::class, 'indexFront'])->name('gallery');
 Route::get('/contact',[ContactController::class, 'indexFront'])->name('contact');
-
+// page de payment
+Route::get('/payment/{id}', function (Pricing $id) {
+    $pricing = $id;
+    $pricing = Pricing::all();
+    return view('partials.payment',compact('pricing'));
+})->name('payment');
 // Routes Backoffice 
 Route::get('/backoffice', [BackofficeController::class, 'index'])->middleware(['auth'])->name('backoffice');
 Route::resource('/backoffice/title', TitleController::class);
@@ -53,8 +60,12 @@ Route::resource('/backoffice/client', ClientController::class);
 Route::resource('/backoffice/newsletter', NewsletterController::class);
 Route::resource('/backoffice/footer', FooterController::class);
 Route::resource('/backoffice/user', UserController::class);
-
-
+Route::resource('/backoffice/contact', ContactController::class);
+Route::resource('/backoffice/tweet', TweetController::class);
+// Email
+Route::get('/send-email', function () {
+    return view('email');
+});
 
 Route::get('/dashboard', function () {
     return view('backoffice');

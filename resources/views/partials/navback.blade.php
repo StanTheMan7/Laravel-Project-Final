@@ -5,11 +5,11 @@
     </div>
     <ul class="nav-list ">
         <li>
-            <a href="{{route('dashboard')}}" class="text-light">
-                <i class='bx bxs-dashboard'></i>
-                <span class="links_name">Dashboard</span>
+            <a href="{{route('contact.index')}}" class="text-light">
+                <i class='bx bx-user-pin'></i>
+                <span class="links_name">Contact</span>
             </a>
-            <span class="tooltip">Dashboard</span>
+            <span class="tooltip">Contact</span>
         </li>
         <li>
             <a href="{{route('header.index')}}" class="text-light">
@@ -50,27 +50,36 @@
         </a>
         <span class="tooltip">Trainers</span>
         </li>
-        <li>
 
-        <a href="{{route('gallery.index')}}" class="text-light">
-            <i class='bx bx-photo-album' ></i>
-            <span class="links_name">Galleries</span>
-        </a>
-        <span class="tooltip">Galleries</span>
+        <li>
+            <a href="{{route('gallery.index')}}" class="text-light">
+                <i class='bx bx-photo-album' ></i>
+                <span class="links_name">Galleries</span>
+            </a>
+            <span class="tooltip">Galleries</span>
+        </li>
+
+        <li>
+            <a href="{{route('event.index')}}" class="text-light">
+                <i class='bx bx-calendar-event' ></i>
+                <span class="links_name">Events</span>
+            </a>
+            <span class="tooltip">Events</span>
+        </li>
+        
+        <li>
+            <a href="{{route('pricing.index')}}" class="text-light">
+                <i class='bx bx-money' ></i>
+                <span class="links_name">Pricings</span>
+            </a>
+            <span class="tooltip">Pricings</span>
         </li>
         <li>
-        <a href="{{route('event.index')}}" class="text-light">
-            <i class='bx bx-calendar-event' ></i>
-            <span class="links_name">Events</span>
-        </a>
-        <span class="tooltip">Events</span>
-        </li>
-        <li>
-        <a href="{{route('pricing.index')}}" class="text-light">
-            <i class='bx bx-money' ></i>
-            <span class="links_name">Pricings</span>
-        </a>
-        <span class="tooltip">Pricings</span>
+            <a href="{{route('newsletter.index')}}" class="text-light">
+                <i class='bx bx-user-pin'></i>
+                <span class="links_name">Newsletter</span>
+            </a>
+            <span class="tooltip">Newsletter</span>
         </li>
         <li>
             <a href="{{route('client.index')}}" class="text-light">
@@ -79,27 +88,30 @@
             </a>
             <span class="tooltip">Clients</span>
         </li>
+        
         <li>
-            <a href="{{route('pricing.index')}}" class="text-light">
-                <i class='bx bxs-phone' ></i>
-                <span class="links_name">Pricings</span>
+            <a href="{{route('title.index')}}" class="text-light">
+                <i class='bx bx-text'></i>
+                <span class="links_name">Titles</span>
             </a>
-            <span class="tooltip">Pricings</span>
-        </li>
-        <a href="/backoffice/title" class="text-light">
-            <i class='bx bx-text'></i>
-            <span class="links_name">Titles</span>
-        </a>
             <span class="tooltip">Title</span>
         </li>
 
         <li>
-            <a href="/backoffice/user" class="text-light">
+            <a href="{{route('user.index')}}" class="text-light">
                 <i class='bx bx-user-pin'></i>
                 <span class="links_name">Users</span>
             </a>
             <span class="tooltip">Users</span>
         </li>
+        <li>
+            <a href="{{route('footer.index')}}" class="text-light">
+                <i class='bx bx-user-pin'></i>
+                <span class="links_name">Footer</span>
+            </a>
+            <span class="tooltip">Footer</span>
+        </li>
+
 
 
         <li class="profile">

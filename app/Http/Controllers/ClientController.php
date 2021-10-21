@@ -89,9 +89,9 @@ class ClientController extends Controller
             'function'=>['required']
         ]);
         if($request->file('url') !== null){
-            Storage::disk('public')->delete('img/' . $client->url);
+            Storage::disk('public')->delete('img/icon' . $client->url);
             $client->url = $request->file('url')->hashName();
-            $request->file('url')->storePublicly('img', 'public');
+            $request->file('url')->storePublicly('img/icon', 'public');
         }
         $client->icon = $request->icon;
         $client->text = $request->text;

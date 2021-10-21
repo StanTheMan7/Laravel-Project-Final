@@ -8,6 +8,8 @@
     <a class="btn btn-info" href="{{route("background.create")}}">Create</a>
 </div>
 
+
+
 <table class="table">
   <thead>
       <tr>

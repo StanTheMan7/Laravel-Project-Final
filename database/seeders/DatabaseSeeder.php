@@ -29,7 +29,9 @@ class DatabaseSeeder extends Seeder
             NewsletterSeeder::class,
             FooterSeeder::class,
             TweetSeeder::class,
-            UserSeeder::class
+            RoleSeeder::class,
+            UserSeeder::class,
+            ContactSeeder::class
         ]);
     }
 }

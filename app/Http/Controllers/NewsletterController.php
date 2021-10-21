@@ -49,7 +49,7 @@ class NewsletterController extends Controller
      */
     public function show(Newsletter $newsletter)
     {
-        //
+        return view('backoffice.newsletter.show', compact('newsletter'));
     }
 
     /**
@@ -60,7 +60,7 @@ class NewsletterController extends Controller
      */
     public function edit(Newsletter $newsletter)
     {
-        //
+        return view('backoffice.newsletter.edit', compact('newsletter'));
     }
 
     /**
@@ -72,7 +72,14 @@ class NewsletterController extends Controller
      */
     public function update(Request $request, Newsletter $newsletter)
     {
-        //
+        request()->validate([
+            'title'=>['required'],
+            'button'=>['required']
+        ]);
+        $newsletter->title = $request->title;
+        $newsletter->button = $request->button;
+        $newsletter->save();
+        return redirect()->route('newsletter.index');
     }
 
     /**
@@ -83,6 +90,7 @@ class NewsletterController extends Controller
      */
     public function destroy(Newsletter $newsletter)
     {
-        //
+        $newsletter->delete();
+        return redirect()->route('newsletter.index');
     }
 }

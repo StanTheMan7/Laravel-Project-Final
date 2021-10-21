@@ -15,7 +15,6 @@ class FooterSeeder extends Seeder
     public function run()
     {
         DB::table('footers')->insert([
-            'url'=>'img/logo/logo.png',
             'text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a convallis nulla. Ut ',
             'icon1'=>'zmdi zmdi-email',
             'icon2'=>'zmdi zmdi-phone',

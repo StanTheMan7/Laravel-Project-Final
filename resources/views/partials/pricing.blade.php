@@ -24,7 +24,11 @@
                             <li>{{$item->gift3}}</li>
                             <li>{{$item->gift4}}</li>
                         </ul>
-                        <a href="#">{{$item->button}}</a>
+                        @if (Auth::check())
+                            <a class="  banner-btn  nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('payment' , $item->id)  }}">{{$item->button}}</a>
+                        @else
+                            <a class="  banner-btn  nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('register') }}">{{$item->button}}</a>   
+                        @endif
                     </div>
                 </div>
             </div>

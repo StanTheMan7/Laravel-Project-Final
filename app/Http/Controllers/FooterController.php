@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Footer;
 use App\Models\Header;
+use App\Models\Tweet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,9 +16,10 @@ class FooterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
+    {
+        $tweet = Tweet::all();
         $footer = Footer::all();
-        return view('backoffice.footer.all', compact('footer','header'));
+        return view('backoffice.footer.all', compact('footer','tweet'));
     }
 
     /**
@@ -49,7 +51,8 @@ class FooterController extends Controller
      */
     public function show(Footer $footer)
     {
-        return view('backoffice.footer.show', compact('footer'));
+        $tweet = Tweet::all();
+        return view('backoffice.footer.show', compact('footer','tweet'));
     }
 
     /**
@@ -60,7 +63,8 @@ class FooterController extends Controller
      */
     public function edit(Footer $footer)
     {
-        return view('backoffice.footer.edit', compact('footer'));
+        $tweet = Tweet::all();
+        return view('backoffice.footer.edit', compact('footer','tweet'));
     }
 
     /**
@@ -82,11 +86,6 @@ class FooterController extends Controller
             'address'=>['required'],
             'copyright'=>['required']
         ]);
-        if($request->file('url') !== null){
-            Storage::disk('public')->delete('img/' . $footer->url);
-            $footer->url = $request->file('url')->hashName();
-            $request->file('url')->storePublicly('img', 'public');
-        }
         $footer->text = $request->text;
         $footer->icon1 = $request->icon1;
         $footer->icon2 = $request->icon2;
@@ -107,7 +106,6 @@ class FooterController extends Controller
      */
     public function destroy(Footer $footer)
     {
-        Storage::disk('public')->delete('img/' . $footer->url);
         $footer->delete();
         return redirect()->route('footer.index');
     }

@@ -89,6 +89,7 @@ class PricingController extends Controller
         $pricing->gift4 = $request->gift4;
         $pricing->button = $request->button;
         $pricing->save();
+        return redirect()->route('pricing.index');
     }
 
     /**

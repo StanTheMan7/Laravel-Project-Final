@@ -18,25 +18,25 @@ class ClientSeeder extends Seeder
             [
                 'icon'=>'zmdi zmdi-quote',
                 'text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just. Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam',
-                'url'=>'img/icon/signature.png',
+                'url'=>'signature.png',
                 'function'=>'Co-Founder Of Company'
             ],
             [
                 'icon'=>'zmdi zmdi-quote',
                 'text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just. Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam',
-                'url'=>'img/icon/signature.png',
+                'url'=>'signature.png',
                 'function'=>'Co-Founder Of Company'
             ],
             [
                 'icon'=>'zmdi zmdi-quote',
                 'text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just. Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam',
-                'url'=>'img/icon/signature.png',
+                'url'=>'signature.png',
                 'function'=>'Co-Founder Of Company'
             ],
             [
                 'icon'=>'zmdi zmdi-quote',
                 'text'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non mi just. Aliquam vitae purus vel odio suscipit lobortis. Donec interdum finibus egestas. In eleifend ipsum eu lacinia congue. Vestibulum sodales, sapien aliquam',
-                'url'=>'img/icon/signature.png',
+                'url'=>'signature.png',
                 'function'=>'Co-Founder Of Company'
             ]
         ]);

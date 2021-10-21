@@ -46,11 +46,7 @@
 									
 										<a class=" banner-btn nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('login') }}">Log in</a>
 									
-								@if (Route::has('register'))
-									
-										<a class="  banner-btn  nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('register') }}">Register</a>
-									
-								@endif
+								
 							@endauth
 						</div>
 					

@@ -14,7 +14,8 @@ class TweetController extends Controller
      */
     public function index()
     {
-        //
+        $tweet = Tweet::all();
+        return view('backoffice.tweet.all',compact('tweet'));
     }
 
     /**
@@ -46,7 +47,7 @@ class TweetController extends Controller
      */
     public function show(Tweet $tweet)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +58,7 @@ class TweetController extends Controller
      */
     public function edit(Tweet $tweet)
     {
-        //
+        return view('backoffice.tweet.edit', compact('tweet'));
     }
 
     /**
@@ -69,7 +70,24 @@ class TweetController extends Controller
      */
     public function update(Request $request, Tweet $tweet)
     {
-        //
+        request()->validate([
+            'title'=>['required'],
+            'icon4'=>['required'],
+            'text2'=>['required'],
+            'link1'=>['required'],
+            'icon5'=>['required'],
+            'text3'=>['required'],
+            'link2'=>['required'],
+        ]);
+        $tweet->title = $request->title;
+        $tweet->icon4 = $request->icon4;
+        $tweet->text2 = $request->text2;
+        $tweet->link1 = $request->link1;
+        $tweet->icon5 = $request->icon5;
+        $tweet->text3 = $request->text3;
+        $tweet->link2 = $request->link2;
+        $tweet->save();
+        return redirect()->route('footer.index');
     }
 
     /**
@@ -80,6 +98,7 @@ class TweetController extends Controller
      */
     public function destroy(Tweet $tweet)
     {
-        //
+        $tweet->delete();
+        return redirect()->route('footer.index');
     }
 }

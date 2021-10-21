@@ -18,13 +18,11 @@
                                     <div class="single-testimonial">
                                         <i class="{{$item->icon}}"></i>
                                         <p>{{$item->text}}</p>
-                                        <img src="{{$item->url}}" alt="signature">
+                                        <img src="{{asset('img/icon/' . $item->url)}}" alt="signature">
                                         <h6>{{$item->function}}</h6>
                                     </div>    
                                 </div> 
-
                                 @endforeach
- 
                             </div> 
                         </div>   
                     </div>

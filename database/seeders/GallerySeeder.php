@@ -16,39 +16,39 @@ class GallerySeeder extends Seeder
     {
         DB::table('galleries')->insert([
             [ 
-                'url'=>'img/portfolio/gal.jpg',
+                'url'=>'gal.jpg',
                 'icon'=>'zmdi zmdi-zoom-in'
             ],
             [
-                'url'=>'img/portfolio/gal2.jpg',
+                'url'=>'gal2.jpg',
                 'icon'=>'zmdi zmdi-zoom-in'
             ],
             [ 
-                'url'=>'img/portfolio/gal3.jpg',
+                'url'=>'gal3.jpg',
                 'icon'=>'zmdi zmdi-zoom-in'
             ],
             [ 
-                'url'=>'img/portfolio/gal4.jpg',
+                'url'=>'gal4.jpg',
                 'icon'=>'zmdi zmdi-zoom-in'
             ],
             [ 
-                'url'=>'img/portfolio/gal5.jpg',
+                'url'=>'gal5.jpg',
                 'icon'=>'zmdi zmdi-zoom-in'
             ],
             [
-                'url'=>'img/portfolio/gal6.jpg',
+                'url'=>'gal6.jpg',
                 'icon'=>'zmdi zmdi-zoom-in'
             ],
             [ 
-                'url'=>'img/portfolio/gal7.jpg',
+                'url'=>'gal7.jpg',
                 'icon'=>'zmdi zmdi-zoom-in'
             ],
             [ 
-                'url'=>'img/portfolio/gal8.jpg',
+                'url'=>'gal8.jpg',
                 'icon'=>'zmdi zmdi-zoom-in'
             ],
             [ 
-                'url'=>'img/portfolio/gal9.jpg',
+                'url'=>'gal9.jpg',
                 'icon'=>'zmdi zmdi-zoom-in'
             ]
         ]);

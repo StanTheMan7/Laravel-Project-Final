@@ -15,15 +15,14 @@ class CreateFootersTable extends Migration
     {
         Schema::create('footers', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
-            $table->string('text');
-            $table->string('icon1');
-            $table->string('icon2');
-            $table->string('icon3');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('copyright');
+            $table->string('text')->nullable();
+            $table->string('icon1')->nullable();
+            $table->string('icon2')->nullable();
+            $table->string('icon3')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('copyright')->nullable();
             $table->timestamps();
         });
     }

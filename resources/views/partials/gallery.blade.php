@@ -16,7 +16,7 @@
              @foreach ($gallery as $item)
                 <div class="col-md-4 col-sm-4 col-xs-12 grid-item cat1 cat3" style="position: absolute; left: 0%; top: 0px;">
                     <div class="portfolio-img single-img">
-                        <img src="{{$item->url}}" alt="project">
+                        <img src="{{asset ('img/portfolio/' . $item->url)}}" alt="project">
                         <div class="gallery-icon">
                             <a class="image-popup" href="{{asset ('img/portfolio/' . $item->url)}}">
                                 <i class="{{$item->icon}}"></i>
