@@ -17,7 +17,10 @@ class PricingController extends Controller
         $pricing = Pricing::all();
         return view('backoffice.pricing.all', compact('pricing'));
     }
-
+    public function payment(Pricing $id){
+        $pricing = $id;
+        return view('partials.payment', compact('pricing'));
+    }
     /**
      * Show the form for creating a new resource.
      *

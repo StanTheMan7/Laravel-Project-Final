@@ -39,11 +39,7 @@ Route::get('/classes', [ClasseController::class, 'indexFront'])->name('classes')
 Route::get('/gallery', [GalleryController::class, 'indexFront'])->name('gallery');
 Route::get('/contact',[ContactController::class, 'indexFront'])->name('contact');
 // page de payment
-Route::get('/payment/{id}', function (Pricing $id) {
-    $pricing = $id;
-    $pricing = Pricing::all();
-    return view('partials.payment',compact('pricing'));
-})->name('payment');
+Route::get('/payment/{id}', [PricingController::class, 'payment'])->name('payment');
 // Routes Backoffice 
 Route::get('/backoffice', [BackofficeController::class, 'index'])->middleware(['auth'])->name('backoffice');
 Route::resource('/backoffice/title', TitleController::class);
