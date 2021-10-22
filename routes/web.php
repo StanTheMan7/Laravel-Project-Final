@@ -11,6 +11,7 @@ use App\Http\Controllers\FooterController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ScheduleController;
@@ -40,6 +41,8 @@ Route::get('/gallery', [GalleryController::class, 'indexFront'])->name('gallery'
 Route::get('/contact',[ContactController::class, 'indexFront'])->name('contact');
 // page de payment
 Route::get('/payment/{id}', [PricingController::class, 'payment'])->name('payment');
+// email
+Route::resource('/mail', MailController::class);
 // Routes Backoffice 
 Route::get('/backoffice', [BackofficeController::class, 'index'])->middleware(['auth'])->name('backoffice');
 Route::resource('/backoffice/title', TitleController::class);
@@ -59,9 +62,7 @@ Route::resource('/backoffice/user', UserController::class);
 Route::resource('/backoffice/contact', ContactController::class);
 Route::resource('/backoffice/tweet', TweetController::class);
 // Email
-Route::get('/send-email', function () {
-    return view('email');
-});
+
 
 Route::get('/dashboard', function () {
     return view('backoffice');

@@ -96,6 +96,13 @@
             </a>
             <span class="tooltip">Title</span>
         </li>
+        <li>
+            <a href="{{route('mail.index')}}" class="text-light">
+                <i class='bx bx-text'></i>
+                <span class="links_name">Mail Box</span>
+            </a>
+            <span class="tooltip">Mail Box</span>
+        </li>
 
         <li>
             <a href="{{route('user.index')}}" class="text-light">

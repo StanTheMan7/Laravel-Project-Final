@@ -1,36 +1,58 @@
 <!-- Background Area Start -->
 <div class="slider-area">	
     <div class="slider-wrapper">
-    @php
-       $bigTitle = $background[0]->bigTitle;
-
-        if(preg_match("/^(?P<before>[^)(])?(?P<every_where>((?P<bet_ween>[^)()]+)))(?P<after>[^)(])?$/"," $bigTitle",$matches));
-                        $before = $matches["before"];
-                        $matches["every_where"]; 
-                        $between = $matches["bet_ween"]; 
-                        // $after = $matches["after"];
-    @endphp
-    
         @foreach ($background as $item)
-		        <div class="single-slide" style="background-image: url({{asset('img/slider/'. $item->url)}});">
-                    <div class="slider-content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-7 col-md-7 col-sm-12 col-md-12">
-                                    <div class="text-content-wrapper">
-                                        <div class="text-content text-left">
-                                            <h5>{{$item->title}}</h5>
-                                            <h1>{{$item->bigTtitle}}<span>{{$between}}</span></h1>
-                                            <p>{{$item->description}}</p>
-                                            <a class="banner-btn" href="gallery.html" data-text="read more"><span>{{$item->button}}</span></a>
+    @php
+       $title = $item->bigTitle;
+       
+       if(preg_match("/^(?P<avant>[^)(])?(?P<tout_par>((?P<entre_par>[^)()]+)))(?P<apres>[^)(])?$/"," $title",$matches)){
+        $before = $matches["avant"];
+        $between = $matches["entre_par"];
+        // $after = $matches["apres"]; 
+    }
+    @endphp
+            
+            
+            @if(count($matches) > 0 )
+                        <div class="single-slide" style="background-image: url({{asset('img/slider/'. $item->url)}});">
+                            <div class="slider-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-7 col-md-7 col-sm-12 col-md-12">
+                                            <div class="text-content-wrapper">
+                                                <div class="text-content text-left">
+                                                    <h5>{{$item->title}}</h5>
+                                                    <h1>{{$before}}<span>{{$between}}</span></h1>
+                                                    <p>{{$item->description}}</p>
+                                                    <a class="banner-btn" href="gallery.html" data-text="read more"><span>{{$item->button}}</span></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-		        </div>
-        @endforeach
+                @else
+                        <div class="single-slide" style="background-image: url({{asset('img/slider/'. $item->url)}});">
+                            <div class="slider-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-7 col-md-7 col-sm-12 col-md-12">
+                                            <div class="text-content-wrapper">
+                                                <div class="text-content text-left">
+                                                    <h5>{{$item->title}}</h5>
+                                                    <h1>{{$item->bigTitle}}</h1>
+                                                    <p>{{$item->description}}</p>
+                                                    <a class="banner-btn" href="gallery.html" data-text="read more"><span>{{$item->button}}</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>        
+                        @endif
+                        @endforeach
     </div>
 </div>
 <!-- Background Area End -->

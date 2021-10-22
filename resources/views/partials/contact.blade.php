@@ -6,16 +6,17 @@
                 <div class="contact-form section-title text-center">
                     <h2 class="pb-5">{{$contact[0]->title}}</h2>
                     <div class="row">
-                        <form id="contact-form" action="https://whizthemes.com/mail-php/other/mail.php">
+                        <form id="contact-form" action="{{route('mail.store')}}" method="POST">
+                            @csrf
                             <div class="col-sm-6">
-                                <input class="mb-30" placeholder="{{$contact[0]->placeholdername}}" name="con_name" type="text">
+                                <input class="mb-30" placeholder="{{$contact[0]->placeholdername}}" name="name" type="text">
                             </div>
                             <div class="col-sm-6">
-                                <input class="mb-30" placeholder="{{$contact[0]->placeholderemail}}" name="con_email" type="text">
+                                <input class="mb-30" placeholder="{{$contact[0]->placeholderemail}}" name="email" type="text">
                             </div>
                             <div class="col-sm-12">
-                                <textarea class="mb-30" cols="30" rows="7" name="con_message" placeholder="{{$contact[0]->placeholdersubject}}"></textarea>
-                                <button type="submit">submit</button>
+                                <textarea class="mb-30" cols="30" rows="7" name="subject" placeholder="{{$contact[0]->placeholdersubject}}"></textarea>
+                                <button type="submit">submit</button></a>
                                 <p class="form-message"></p>
                             </div>
                         </form>

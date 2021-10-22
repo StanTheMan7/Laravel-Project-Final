@@ -31,8 +31,5 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container">
-        {{$gallery->links()}}
-    </div> --}}
 </section>    
 <!-- Gallery Area End -->
