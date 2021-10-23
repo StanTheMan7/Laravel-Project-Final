@@ -1,6 +1,4 @@
-@extends('template.mainB')
 
-@section('content')
 
 <div class="card container ">
     <div class="ml-5 p-5">
