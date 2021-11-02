@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\Footer;
+use App\Models\Header;
+use App\Models\Newsletter;
 use App\Models\Pricing;
+use App\Models\Title;
+use App\Models\Tweet;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PricingController extends Controller
 {
@@ -17,9 +25,41 @@ class PricingController extends Controller
         $pricing = Pricing::all();
         return view('backoffice.pricing.all', compact('pricing'));
     }
-    public function payment(Pricing $id){
-        $pricing = $id;
-        return view('partials.payment', compact('pricing'));
+    public function payment($id){
+
+        $data = [
+            'pricing' => Pricing::find($id),
+            'header' => Header::all(),
+            'client' => Client::all(),
+            'titleDesc' => Title::all(),
+            'newsletter' => Newsletter::all(),
+            'footer' => Footer::all(),
+            'tweet' => Tweet::all(),
+        ];
+        return view('pages.payment', $data);
+    }
+
+    public function payed($id){
+
+        $user = User::find(Auth::user()->id);
+        $user->pricing_id = $id;
+        $user->save();
+
+        $data = [
+            'pricing' => Pricing::find($id),
+            'header' => Header::all(),
+            'client' => Client::all(),
+            'titleDesc' => Title::all(),
+            'newsletter' => Newsletter::all(),
+            'footer' => Footer::all(),
+            'tweet' => Tweet::all(),
+        ];
+        return view('pages.payed', $data);
+    }
+    public function updateValue($id){
+        
+        $pricing = Pricing::find($id);
+        
     }
     /**
      * Show the form for creating a new resource.
@@ -92,7 +132,7 @@ class PricingController extends Controller
         $pricing->gift4 = $request->gift4;
         $pricing->button = $request->button;
         $pricing->save();
-        return redirect()->route('pricing.index');
+        return redirect()->route('pricing.index')->with('message', 'Succesfully Updated');
     }
 
     /**
@@ -104,6 +144,6 @@ class PricingController extends Controller
     public function destroy(Pricing $pricing)
     {
         $pricing->delete();
-        return redirect()->route('pricing.index');
+        return redirect()->route('pricing.index')->with('message', 'Succesfully Deleted');
     }
 }

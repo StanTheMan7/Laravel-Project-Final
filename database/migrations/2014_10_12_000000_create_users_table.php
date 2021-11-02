@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->foreignId('role_id')->nullable()->constrained('roles','id')->onDelete('cascade');
+            $table->foreignId('pricing_id')->nullable()->unsigned()->constrained()->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

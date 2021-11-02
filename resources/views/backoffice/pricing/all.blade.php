@@ -3,7 +3,11 @@
 <div class="container ">
   <h2 class="text-center mb-5">DATA pricing</h2>
 {{-- Button Create --}}
-
+@if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+@endif
 
 <div style="display: flex; justify-content:center;">
     <a class="btn btn-info" href="{{route("pricing.create")}}">Create</a>

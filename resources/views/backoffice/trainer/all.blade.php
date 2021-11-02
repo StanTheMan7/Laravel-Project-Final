@@ -1,6 +1,13 @@
 @extends('template.mainB')
 @section('content')
 <div class="container ">
+
+@if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+@endif
+
   <h2 class="text-center mb-5">DATA Trainer</h2>
   {{-- Button Create --}}
 

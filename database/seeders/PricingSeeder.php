@@ -23,7 +23,7 @@ class PricingSeeder extends Seeder
                 'gift2'=>'Free of all message treatments',
                 'gift3'=>'Access Clup Facilites',
                 'gift4'=>'Out Door activites',
-                'button'=>'get started'
+                'button'=>'get started',
             ], 
             [
                 'package'=>'gold package',
@@ -33,7 +33,7 @@ class PricingSeeder extends Seeder
                 'gift2'=>'Free of all message treatments',
                 'gift3'=>'Access Clup Facilites',
                 'gift4'=>'Out Door activites',
-                'button'=>'get started'
+                'button'=>'get started',
             ],
             [
                 'package'=>'platinum package',
@@ -43,7 +43,7 @@ class PricingSeeder extends Seeder
                 'gift2'=>'Free of all message treatments',
                 'gift3'=>'Access Clup Facilites',
                 'gift4'=>'Out Door activites',
-                'button'=>'get started'
+                'button'=>'get started',
             ]
             
         ]);

@@ -19,6 +19,9 @@ class Trainer extends Model
         'link1',
         'link2',
         'link3',
-        'link4'
+        'link4',
     ];
+    public function roles(){
+        return $this->belongsTo(Trainer::class, 'role_id');
+    }
 }

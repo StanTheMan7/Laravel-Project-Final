@@ -4,6 +4,11 @@
   <h2 class="text-center mb-5">DATA Header</h2>
 {{-- Button Create --}}
 
+@if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+@endif
 
 
 <table class="table">

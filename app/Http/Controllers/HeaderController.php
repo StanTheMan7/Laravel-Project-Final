@@ -90,7 +90,7 @@ class HeaderController extends Controller
         $header->li4 = $request->li4;
         $header->li5 = $request->li5;
         $header->save();
-        return redirect()->route('header.index');
+        return redirect()->route('header.index')->with('message', 'Succesfully Updated');;
     }
 
     /**
@@ -103,6 +103,6 @@ class HeaderController extends Controller
     {
         Storage::disk('public')->delete('img/logo' . $header->logo);
         $header->delete();
-        return redirect()->route('header.index');
+        return redirect()->route('header.index')->with('message', 'Succesfully Deleted');;
     }
 }

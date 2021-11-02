@@ -4,6 +4,12 @@
   <h2 class="text-center mb-5">DATA User</h2>
   {{-- Button Create --}}
 
+    @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+    @endif
+    
   <div style="display: flex; justify-content:center;">
     <a class="btn btn-info" href="{{route("user.create")}}">Create User</a>
 </div>

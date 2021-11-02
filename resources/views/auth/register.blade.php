@@ -11,7 +11,7 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+            <input name="pricing_id" style="visibility: collapse; height: 0" type="text" value="{{request()->query('pricingId')}}">
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />

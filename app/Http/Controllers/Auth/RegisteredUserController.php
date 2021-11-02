@@ -20,7 +20,9 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $pricingId = request('pricingId');
+        session('pricingId', $pricingId);
+        return view('auth.register')->with('pricingId', $pricingId);
     }
 
     /**
@@ -42,14 +44,14 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role_id'=> 4,
+            'role_id' => 4,
+            'pricing_id' => null,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('/#pricing');
     }
 }

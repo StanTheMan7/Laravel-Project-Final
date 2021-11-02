@@ -1,10 +1,20 @@
  <!-- Schedule Area Strat -->
  <section class="schedule-area pt-85 pb-90 text-center">
+    @php
+        $before=Str::before($titleDesc[1]->title,'(');
+        $between=Str::between($titleDesc[1]->title,'(',')');
+        $after=Str::after($titleDesc[1]->title,')');
+    @endphp
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-xs-12">
                 <div class="section-title">
-                    <h2>{{$titleDesc[1]->title}}</h2>
+                    @if ($before == $between && $between == $after )
+                        
+                    <h2>{{$before}}</h2>
+                    @else
+                        <h2>{{$before}} <span style="color: rgb(95, 199,174)">{{$between}}</span>{{$after}}</h2>
+                    @endif
                     <p> {{$titleDesc[1]->description}}</p>
                 </div>
             </div>

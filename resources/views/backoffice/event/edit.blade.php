@@ -1,7 +1,15 @@
 @extends('template.mainB')
 
 @section('content')
-
+@if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 <form enctype="multipart/form-data" action="{{route("event.update", $event->id)}}" method="POST">
     @csrf
     @method("PUT")
@@ -19,6 +27,9 @@
     <br>
     <label for="">Time:</label>
     <input type="text" name="time" value="{{$event->time}}">
+    <br>
+    <label for="">Principal:</label>
+    <input type="checkbox" name="principal" value="true" {{$event->principal == true ? 'checked': null}}>
     <br>
     </div>
     </div>

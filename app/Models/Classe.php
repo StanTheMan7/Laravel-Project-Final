@@ -14,7 +14,16 @@ class Classe extends Model
     protected $fillable = [
         'title',
         'name',
-        'time'
+        'time',
+        'tag_id',
+        'categorie_id',
     ]; 
 
+    public function  tags(){
+        return $this->belongsToMany(Tag::class, 'classe_tag');
+    }
+
+    public function categories(){
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

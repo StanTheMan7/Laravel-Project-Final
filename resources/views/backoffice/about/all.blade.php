@@ -4,7 +4,11 @@
   <h2 class="text-center mb-5">DATA About</h2>
 {{-- Button Create --}}
 
-
+@if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+@endif
 
 <table class="table">
   <thead>
@@ -26,7 +30,7 @@
       <td>{{$item->title}}</td>
       <td>{{$item->description1}}</td>
       <td>{{$item->description2}}</td>
-      <td><img style="width: 250px" src="{{ asset('img/about/' . $item->url) }}" alt=""></td>
+      <td><img style=" height: 15rem; width: 1555rem;" src="{{ asset('img/about/' . $item->url) }}" alt=""></td>
       <td>{{$item->video}}</td>
       <td>{{$item->button}}</td>
     <td><a class="btn btn-warning" href="{{route('about.edit', $item->id)}}">Edit about</a> </td> 

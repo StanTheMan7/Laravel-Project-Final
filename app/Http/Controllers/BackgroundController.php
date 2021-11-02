@@ -51,8 +51,9 @@ class BackgroundController extends Controller
         $background->button = $request->button;
         $background->url= $request->file("url")->hashName();
         $request->file("url")->storePublicly("img/slider", "public");
+        $request->principal == 'true' ? $background->principal = 1: $background->principal = 0;
         $background->save();
-        return redirect()->route("background.index");
+        return redirect()->route("background.index")->with('message', 'Succesfully Created');;
     }
 
     /**
@@ -101,8 +102,10 @@ class BackgroundController extends Controller
         $background->title = $request->title;
         $background->bigTitle = $request->bigTitle;
         $background->description = $request->description;
+        // dd($request->principal);
+        $request->principal == 'true' ? $background->principal = 1: $background->principal = 0;
         $background->save();
-        return redirect()->route("background.index");
+        return redirect()->route("background.index")->with('message', 'Succesfully Updated');;
     }
 
     /**

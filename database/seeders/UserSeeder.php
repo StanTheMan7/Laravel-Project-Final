@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
                     "email"=> "admin@admin.com",
                     "password" => Hash::make("admin12345"),
                     "role_id"=> 1,
+                    "pricing_id"=>1,
                     "created_at"=>now()
                 ],
                 [
@@ -28,6 +29,7 @@ class UserSeeder extends Seeder
                     "email"=> "manager@gmail.com",
                     "password" => Hash::make("manager12345"),
                     "role_id"=> 2,
+                    "pricing_id"=>2,
                     "created_at"=>now()
                 ],
                 [
@@ -35,6 +37,7 @@ class UserSeeder extends Seeder
                     "email"=> "coach@gmail.com",
                     "password" => Hash::make("coachb12345"),
                     "role_id"=> 3,
+                    "pricing_id"=>3,
                     "created_at"=>now()
                 ],
                 
@@ -43,6 +46,7 @@ class UserSeeder extends Seeder
                     "email"=> "user@gmail.com",
                     "password" => Hash::make("user12345"),
                     "role_id"=> 4,
+                    "pricing_id"=>1,
                     "created_at"=>now()
                 ]
         ]);

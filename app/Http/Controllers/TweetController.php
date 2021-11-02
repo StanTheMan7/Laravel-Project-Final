@@ -87,7 +87,7 @@ class TweetController extends Controller
         $tweet->text3 = $request->text3;
         $tweet->link2 = $request->link2;
         $tweet->save();
-        return redirect()->route('footer.index');
+        return redirect()->route('footer.index')->with('message', 'Succesfully Updated');
     }
 
     /**

@@ -95,7 +95,7 @@ class FooterController extends Controller
         $footer->address = $request->address;
         $footer->copyright = $request->copyright;
         $footer->save();
-        return redirect()->route('footer.index');
+        return redirect()->route('footer.index')->with('message', 'Succesfully Updated');
     }
 
     /**
@@ -107,6 +107,6 @@ class FooterController extends Controller
     public function destroy(Footer $footer)
     {
         $footer->delete();
-        return redirect()->route('footer.index');
+        return redirect()->route('footer.index')->with('message', 'Succesfully Deleted');
     }
 }

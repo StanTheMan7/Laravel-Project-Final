@@ -110,7 +110,7 @@ class AboutController extends Controller
         $about->video = $request->video;
         $about->button = $request->button;
         $about->save();
-        return redirect()->route('about.index');
+        return redirect()->route('about.index')->with('message', 'Succesfully Updated');
     }
 
     /**

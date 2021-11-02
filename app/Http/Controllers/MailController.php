@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail as FacadesMail;
 
 class MailController extends Controller
 {
@@ -14,8 +16,8 @@ class MailController extends Controller
      */
     public function index()
     {
-        $mail = Mail::all();
-        return view('email', compact('mail'));
+        $mail = Mail::all()->sortBy('read');
+        return view('pages.mailBox', compact('mail'));
     }
 
     
@@ -37,8 +39,9 @@ class MailController extends Controller
             $mail->name = $request->name;
             $mail->email = $request->email;
             $mail->subject = $request->subject;
+            $mail->read = 0;
             $mail->save();
-            return redirect()->back();
+            return redirect()->back()->with('message', 'Succesfully Created');
     }
     /**
      * Display the specified resource.
@@ -48,7 +51,8 @@ class MailController extends Controller
      */
     public function show(Mail $mail)
     {
-
+        $mail->read = 1;
+        $mail->save();
         return view('backoffice.mail.showEmail',compact('mail'));
     }
 
@@ -67,6 +71,6 @@ class MailController extends Controller
     public function destroy(Mail $mail)
     {
         $mail->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Succesfully Deleted');;
     }
 }

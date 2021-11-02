@@ -41,6 +41,7 @@ Route::get('/gallery', [GalleryController::class, 'indexFront'])->name('gallery'
 Route::get('/contact',[ContactController::class, 'indexFront'])->name('contact');
 // page de payment
 Route::get('/payment/{id}', [PricingController::class, 'payment'])->name('payment');
+Route::get('/payed/{id}', [PricingController::class, 'payed'])->name('payed');
 // email
 Route::resource('/mail', MailController::class);
 // Routes Backoffice 

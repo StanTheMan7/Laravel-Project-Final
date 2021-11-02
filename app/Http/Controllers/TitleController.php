@@ -77,7 +77,7 @@ class TitleController extends Controller
         $title->title = $request->title;
         $title->description = $request->description;
         $title->save();
-        return redirect()->route('title.index');
+        return redirect()->route('title.index')->with('message', 'Succesfully Updated');
     }
 
     /**
@@ -89,6 +89,6 @@ class TitleController extends Controller
     public function destroy(Title $title)
     {
         $title->delete();
-        return redirect()->route('title.index');
+        return redirect()->route('title.index')->with('message', 'Succesfully Deleted');
     }
 }

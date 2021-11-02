@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Footer;
 use App\Models\Header;
 use App\Models\Newsletter;
+use App\Models\Role;
 use App\Models\Title;
 use App\Models\Tweet;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class ContactController extends Controller
         $newsletter = Newsletter::all();
         $footer = Footer::all();
         $tweet = Tweet::all();
-        return view('pages.contact', compact('contact', 'header', 'client', 'titleDesc', 'newsletter','footer', 'tweet'));
+        return view('pages.contact', compact( 'contact', 'header', 'client', 'titleDesc', 'newsletter','footer', 'tweet'));
     }
     public function index(){
         $contact = Contact::all();
@@ -97,7 +98,7 @@ class ContactController extends Controller
         $contact->placeholderemail= $request->placeholderemail;
         $contact->placeholdersubject = $request->placeholdersubject;
         $contact->save();
-        return redirect()->route('contact.index');
+        return redirect()->route('contact.index')->with('message', 'Succesfully Updated');
     }
 
     /**

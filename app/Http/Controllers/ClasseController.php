@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Classe;
+use App\Models\ClasseTag;
 use App\Models\Client;
 use App\Models\Footer;
 use App\Models\Header;
 use App\Models\Newsletter;
 use App\Models\Pricing;
+use App\Models\Tag;
 use App\Models\Title;
 use App\Models\Tweet;
 use Illuminate\Http\Request;
@@ -35,7 +38,10 @@ class ClasseController extends Controller
      
     public function index(){
         $classe = Classe::all();
-        return view('backoffice.classe.all',compact('classe'));
+        $tags = Tag::all();
+        $classe_tag = ClasseTag::all();
+        $categories = Category::all();
+        return view('backoffice.classe.all',compact('classe','tags','classe_tag', 'categories'));
     }
 
     /**
@@ -45,7 +51,11 @@ class ClasseController extends Controller
      */
     public function create()
     {
-        return view('backoffice.classe.create');
+        $classe = Classe::all();
+        $tags = Tag::all();
+        $classe_tag = ClasseTag::all();
+        $categories = Category::all();
+        return view('backoffice.classe.create',compact('classe', 'tags','classe_tag','categories'));
     }
 
     /**
@@ -61,15 +71,30 @@ class ClasseController extends Controller
             'title'=>['required'],
             'name'=>['required'],
             'time'=>['required'],
+            
         ]);
+
+        $tab = [];
+
+        foreach ($request->tag_id as $tag) {
+            array_push($tab, intval($tag));
+        }
         $classe = new Classe();
         $classe->url = $request->file('url')->hashName();
-        $request->file('url')->storePublicly('img', 'public');
+        $request->file('url')->storePublicly('img/class/', 'public');
         $classe->title = $request->title;
         $classe->name = $request->name;
         $classe->time = $request->time;
+        $classe->category_id = $request->category_id[0];
         $classe->save();
-        return redirect()->route('classe.index');
+        foreach ($tab as $idTag) {
+            $classe_tag = new ClasseTag();
+            $classe_tag->classe_id = $classe->id;
+            $classe_tag->tag_id = $idTag;
+            $classe_tag->save();
+        }
+
+        return redirect()->route('classe.index')->with('message', 'Succesfully Created');
     }
 
     /**
@@ -107,17 +132,18 @@ class ClasseController extends Controller
             'title'=>['required'],
             'name'=>['required'],
             'time'=>['required'],
+            'category_id'=>['required']
         ]);
         if($request->file('url') !== null) {
-            Storage::disk('public')->delete('img/' . $classe->url);
+            Storage::disk('public')->delete('img/class' . $classe->url);
             $classe->url = $request->file('url')->hashName();
-            $request->file('url')->storePublicly('img', 'public');
+            $request->file('url')->storePublicly('img/class', 'public');
         }
         $classe->title = $request->title;
         $classe->name = $request->name;
         $classe->time = $request->time;
         $classe->save();
-        return redirect()->route('classe.index');
+        return redirect()->route('classe.index')->with('message', 'Succesfully Updated');
     }
 
     /**
@@ -128,8 +154,8 @@ class ClasseController extends Controller
      */
     public function destroy(Classe $classe)
     {
-        Storage::disk('public')->delete('img/' . $classe->url);
+        Storage::disk('public')->delete('img/class' . $classe->url);
         $classe->delete();
-        return redirect()->route('classe.index');
+        return redirect()->route('classe.index')->with('message', 'Succesfully Deleted');
     }
 }

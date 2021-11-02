@@ -298,7 +298,7 @@ td.pink{background: #FF91B8}
 }
 .trainer-hover ul li{
     display: inline-block;
-    border: 1;2px solid #fff;
+    border: 1,2px solid #fff;
     border-radius: 50%;
     height: 30px;
     width: 30px;

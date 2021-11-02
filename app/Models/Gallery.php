@@ -11,6 +11,7 @@ class Gallery extends Model
     protected $table = 'galleries';
     
     protected $fillable = [
-        'icon',
+        'url',
+        'icon'
     ];
 }

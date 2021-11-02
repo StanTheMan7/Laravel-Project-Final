@@ -20,6 +20,7 @@ class CreateBackgroundsTable extends Migration
             $table->string('description');
             $table->string('url');
             $table->string('button');
+            $table->boolean('principal');
             $table->timestamps();
         });
     }

@@ -16,22 +16,30 @@ class ClasseSeeder extends Seeder
     {
         DB::table('classes')->insert([
             [
-                'url'=>'img/class/1.jpg',
+                'url'=>'1.jpg',
                 'title'=>'yoga for climbers',
                 'name'=>'Sathi Bhuiya',
-                'time'=>'10.00Am-05:00Pm'
+                'time'=>'10.00Am-05:00Pm',
+                'category_id'=>1,
+                "created_at"=>now()
+
             ],
             [
-                'url'=>'img/class/2.jpg',
+                'url'=>'2.jpg',
                 'title'=>'yoga for climbers',
                 'name'=>'Sathi Bhuiya',
-                'time'=>'10.00Am-05:00Pm'
+                'time'=>'10.00Am-05:00Pm',
+                'category_id'=>2,
+                "created_at"=>now()
+                
             ],
             [
-                'url'=>'img/class/3.jpg',
+                'url'=>'3.jpg',
                 'title'=>'yoga for climbers',
                 'name'=>'Sathi Bhuiya',
-                'time'=>'10.00Am-05:00Pm'
+                'time'=>'10.00Am-05:00Pm',
+                'category_id'=>3,
+                "created_at"=>now()
             ],   
         ]);
     }

@@ -20,4 +20,7 @@ class Pricing extends Model
         'gift4',
         'button'
     ];
+    public function user(){
+        return $this->hasMany(User::class, 'pricing_id');
+    }
 }

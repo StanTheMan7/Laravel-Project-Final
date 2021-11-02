@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Pricing;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'role_id',
+        'pricing_id',
         'password',
     ];
 
@@ -43,6 +44,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public function role(){
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class, 'role_id');
     }
+    public function pricing(){
+        return $this->belongsTo(Pricing::class , 'pricing_id');
+    }
+    
 }

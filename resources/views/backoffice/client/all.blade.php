@@ -1,5 +1,12 @@
 @extends('template.mainB')
 @section('content')
+
+@if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+@endif
+
 <div class="container ">
   <h2 class="text-center mb-5">DATA Client</h2>
   {{-- Button Create --}}

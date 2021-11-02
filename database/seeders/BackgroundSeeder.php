@@ -20,14 +20,17 @@ class BackgroundSeeder extends Seeder
                 'bigTitle'=>'Keep Refresh & Strong Your Body',
                 'description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer auctor pharetra iss neque. Nullam cursus elit sit amet justo interdum facilisis id at tortor.',
                 'url'=>'slider1.jpg',
-                'button'=>'salam'
+                'button'=>'salam',
+                'principal'=>false
             ],
             [
                 'title'=>'Welcome Our Handstand',
                 'bigTitle'=>'Keep Refresh & Strong Your Body',
                 'description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer auctor pharetra iss neque. Nullam cursus elit sit amet justo interdum facilisis id at tortor.',
                 'url'=>'slider2.jpg',
-                'button'=>'alecum'
+                'button'=>'alecum',
+                'principal'=>false
+
             ],
         ]);
     }

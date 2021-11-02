@@ -15,4 +15,7 @@ class Role extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
+    public function trainers(){
+        return $this->hasMany(Trainer::class, 'role_id');
+    }
 }

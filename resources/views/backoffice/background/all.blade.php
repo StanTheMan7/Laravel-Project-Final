@@ -2,8 +2,14 @@
 @section('content')
 <div class="container ">
   <h2 class="text-center mb-5">DATA background</h2>
+  
+  @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+  @endif
+  
   {{-- Button Create --}}
-
   <div style="display: flex; justify-content:center;">
     <a class="btn btn-info" href="{{route("background.create")}}">Create</a>
 </div>

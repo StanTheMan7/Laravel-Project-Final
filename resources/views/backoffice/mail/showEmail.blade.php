@@ -1,6 +1,7 @@
 
 
 <div class="card container ">
+    <a href="/mail">Boite de reception</a>
     <div class="ml-5 p-5">
     <p><b>ID de l'élément : </b><i>{{$mail->id}}</i></p>
     <p><b>Name  : </b><i>{{$mail->name}}</i></p>
@@ -9,4 +10,3 @@
     </div>
 </div>
 
-@endsection

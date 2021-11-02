@@ -2,7 +2,11 @@
 @section('content')
 <div class="container ">
   <h2 class="text-center mb-5">DATA Contact</h2>
-
+@if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+@endif
 <table class="table">
   <thead>
       <tr>

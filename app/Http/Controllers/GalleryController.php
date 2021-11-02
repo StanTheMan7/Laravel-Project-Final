@@ -55,14 +55,13 @@ class GalleryController extends Controller
     {
         request()->validate([
             'url'=>['required'],
-            'icon'=>['required']
         ]);
         $gallery = new Gallery();
         $gallery->url = request()->file('url')->hashName();
         $request->file('url')->storePublicly('img/portfolio' , 'public');
         $gallery->icon = $request->icon;
         $gallery->save();
-        return redirect()->route('gallery.index');
+        return redirect()->route('gallery.index')->with('message', 'Succesfully Created');
     }
     /**
      * Display the specified resource.
@@ -97,7 +96,6 @@ class GalleryController extends Controller
     {
         request()->validate([
             'url'=>['required'],
-            'icon'=>['required']
         ]);
         if($request->file('url') !== null){
             Storage::disk('public')->delete('img/portfolio' . $gallery->url);
@@ -106,7 +104,7 @@ class GalleryController extends Controller
         }
         $gallery->icon = $request->icon;
         $gallery->save();
-        return redirect()->route('gallery.index');
+        return redirect()->route('gallery.index')->with('message', 'Succesfully Updated');
     }
 
     /**
@@ -119,6 +117,6 @@ class GalleryController extends Controller
     {
         Storage::disk('public')->delete('img/portfolio' . $gallery->url);
         $gallery->delete();
-        return redirect()->route('gallery.index');
+        return redirect()->route('gallery.index')->with('message', 'Succesfully Deleted');
     }
 }

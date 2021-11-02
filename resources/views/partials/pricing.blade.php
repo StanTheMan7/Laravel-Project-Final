@@ -1,10 +1,20 @@
 <!-- Pricing Area Start -->
-<div class="pricing-area pt-95 pb-120 bg-gray">
+@php
+    $before=Str::before($titleDesc[5]->title,'(');
+    $between=Str::between($titleDesc[5]->title,'(',')');
+    $after=Str::after($titleDesc[5]->title,')');
+@endphp
+<div id="pricing" class="pricing-area pt-95 pb-120 bg-gray">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-xs-12">
+            <div  class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-xs-12">
                 <div class="section-title text-center">
-                    <h2><span class="span">{{$titleDesc[5]->title}}</h2>
+                    @if ($before == $between && $between == $after )
+                        
+                    <h2>{{$before}}</h2>
+                    @else
+                        <h2>{{$before}} <span style="color: rgb(95, 199,174)">{{$between}}</span>{{$after}}</h2>
+                    @endif
                     <p>{{$titleDesc[5]->description}}</p>
                 </div>
             </div>
@@ -27,7 +37,7 @@
                         @if (Auth::check())
                             <a class="  banner-btn  nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('payment' , $item->id)  }}">{{$item->button}}</a>
                         @else
-                            <a class="  banner-btn  nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('register') }}">{{$item->button}}</a>   
+                            <a class="  banner-btn  nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('register') . '?pricingId=' . $item->id}} " >{{$item->button}}</a>   
                         @endif
                     </div>
                 </div>

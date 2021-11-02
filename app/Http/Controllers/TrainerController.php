@@ -62,7 +62,7 @@ class TrainerController extends Controller
         $trainer->link3 = $request->link3;
         $trainer->link4 = $request->link4;
         $trainer->save();
-        return redirect()->route('trainer.index');
+        return redirect()->route('trainer.index')->with('message', 'Succesfully Created');
     }
 
     /**
@@ -123,7 +123,7 @@ class TrainerController extends Controller
         $trainer->link3 = $request->link3;
         $trainer->link4 = $request->link4;
         $trainer->save();
-        return redirect()->route('trainer.index');
+        return redirect()->route('trainer.index')->with('message', 'Succesfully Updated');
     }
 
     /**
@@ -134,6 +134,8 @@ class TrainerController extends Controller
      */
     public function destroy(Trainer $trainer)
     {
-        //
+        Storage::disk('public')->delete('img/trainer' . $trainer->url);
+        $trainer->delete();
+        return redirect()->route('trainer.index')->with('message', 'Succesfully Deleted');
     }
 }

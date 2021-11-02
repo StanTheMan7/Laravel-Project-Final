@@ -18,6 +18,7 @@ class CreateClassesTable extends Migration
             $table->string('url');
             $table->string('title');
             $table->string('name');
+            $table->foreignId('category_id')->constrained();
             $table->string('time');
             $table->timestamps();
         });

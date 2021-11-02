@@ -3,9 +3,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-xs-12">
+                @php
+                $before=Str::before($titleDesc[0]->title,'(');
+                $between=Str::between($titleDesc[0]->title,'(',')');
+                $after=Str::after($titleDesc[0]->title,')');
+                @endphp
                 <div class="section-title text-center">
-                    <h2>our classes</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum issss has been the industry's standard dummy text ever since the 1500s, when an unknown lorem </p>
+                    @if ($before == $between && $between == $after )
+                        
+                    <h2>{{$before}}</h2>
+                    @else
+                        <h2>{{$before}} <span style="color: rgb(95, 199,174)">{{$between}}</span>{{$after}}</h2>
+                    @endif
+                    <p>{{$titleDesc[0]->description}}</p>
                 </div>  
             </div>
         </div>
@@ -14,9 +24,9 @@
            <div class="col-md-4 col-sm-6 col-xs-12">     
             <div class="single-class">
                 <div class="single-img">
-                    <a href="class.html"><img src="{{$item->url}}" alt="class"></a>
+                    <a href="class.html"><img src="{{asset('img/class/' . $item->url)}}" alt="class"></a>
                     <div class="gallery-icon">
-                        <a class="image-popup" href="{{$item->url}}">
+                        <a class="image-popup" href="{{asset('img/class/' . $item->url)}}">
                             <i class="zmdi zmdi-zoom-in"></i>
                         </a>   
                     </div>
@@ -26,6 +36,7 @@
                     <ul>
                         <li><i class="zmdi zmdi-face"></i>{{$item->name}}</li>
                         <li><i class="zmdi zmdi-alarm"></i>{{$item->time}}</li>
+                        
                     </ul>
                 </div>
             </div>

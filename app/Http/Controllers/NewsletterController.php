@@ -79,7 +79,7 @@ class NewsletterController extends Controller
         $newsletter->title = $request->title;
         $newsletter->button = $request->button;
         $newsletter->save();
-        return redirect()->route('newsletter.index');
+        return redirect()->route('newsletter.index')->with('message', 'Succesfully Updated');
     }
 
     /**
@@ -91,6 +91,6 @@ class NewsletterController extends Controller
     public function destroy(Newsletter $newsletter)
     {
         $newsletter->delete();
-        return redirect()->route('newsletter.index');
+        return redirect()->route('newsletter.index')->with('message', 'Succesfully Deleted');
     }
 }

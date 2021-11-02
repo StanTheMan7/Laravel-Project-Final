@@ -25,7 +25,8 @@ class TrainerSeeder extends Seeder
                 'link1'=>'https://www.facebook.com/',
                 'link2'=>'https://twitter.com/',
                 'link3'=>'https://dribbble.com/',
-                'link4'=>'https://www.pinterest.com/'
+                'link4'=>'https://www.pinterest.com/',
+                'role_id' => 3,
             ],
             [
                 'url'=>'trainer2.jpg',
@@ -37,7 +38,8 @@ class TrainerSeeder extends Seeder
                 'link1'=>'https://www.facebook.com/',
                 'link2'=>'https://twitter.com/',
                 'link3'=>'https://dribbble.com/',
-                'link4'=>'https://www.pinterest.com/'
+                'link4'=>'https://www.pinterest.com/',
+                'role_id' => 2,
             ],
             [
                 'url'=>'trainer3.jpg',
@@ -49,7 +51,8 @@ class TrainerSeeder extends Seeder
                 'link1'=>'https://www.facebook.com/',
                 'link2'=>'https://twitter.com/',
                 'link3'=>'https://dribbble.com/',
-                'link4'=>'https://www.pinterest.com/'
+                'link4'=>'https://www.pinterest.com/',
+                'role_id' => 3,
             ],
             
         ]);

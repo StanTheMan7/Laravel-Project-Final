@@ -49,7 +49,7 @@ class ClientController extends Controller
         $client->url = $request->file('url')->hashName();
         $request->file('url')->storePublicly('img', 'public');
         $client->save();
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('message', 'Succesfully Created');
     }
 
     /**
@@ -96,7 +96,7 @@ class ClientController extends Controller
         $client->icon = $request->icon;
         $client->text = $request->text;
         $client->save();
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('message', 'Succesfully Updated');
     }
 
     /**
@@ -109,6 +109,6 @@ class ClientController extends Controller
     {
         Storage::disk('public')->delete('img/' . $client->url);
         $client->delete();
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('message', 'Succesfully Deleted');
     }
 }

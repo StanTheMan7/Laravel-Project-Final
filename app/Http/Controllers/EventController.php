@@ -13,7 +13,8 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+
         $event = Event::all();
         return view('backoffice.event.all', compact('event'));
     }
@@ -47,8 +48,9 @@ class EventController extends Controller
         $event->description = $request->description;
         $event->date = $request->date;
         $event->time = $request->time;
+        $request->principal == 'true' ? $event->principal = 1: $event->principal = 0;
         $event->save();
-        return redirect()->route('event.index');
+        return redirect()->route('event.index')->with('message', 'Succesfully Created');
     }
 
     /**
@@ -92,8 +94,9 @@ class EventController extends Controller
         $event->description = $request->description;
         $event->date = $request->date;
         $event->time = $request->time;
+        $request->principal == 'true' ? $event->principal = 1: $event->principal = 0;
         $event->save();
-        return redirect()->route('event.index');
+        return redirect()->route('event.index')->with('message', 'Succesfully Updated');
     }
 
     /**
@@ -105,6 +108,6 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
-        return redirect()->route('event.index');
+        return redirect()->route('event.index')->with('message', 'Succesfully Deleted');
     }
 }

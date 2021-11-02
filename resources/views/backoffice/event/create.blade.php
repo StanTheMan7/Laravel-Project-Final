@@ -1,5 +1,13 @@
 @extends('template.mainB')
-
+    @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+    @endif
 @section('content')
     
 <br>
@@ -15,7 +23,6 @@
             <input type="text" name="description" placeholder="description" value="{{ old('description') }}">
             <input type="text" name="date" placeholder="date" value="{{ old('date') }}">
             <input type="text" name="time" placeholder="time" value="{{ old('time') }}">
-
             <button class="btn btn-success" type="submit">Validate</button>
         </div>
     </form>

@@ -1,7 +1,15 @@
 @extends('template.mainB')
 
 @section('content')
-    
+    @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 <br>
 <h1 style="text-align: center">User</h1>
 <br>

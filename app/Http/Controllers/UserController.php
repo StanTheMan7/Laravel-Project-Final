@@ -33,8 +33,9 @@ class UserController extends Controller
         // pour crypte le mot de pass
         $user->password =  Hash::make($request->password) ;
         $user->role_id = $request->role_id;
+        $user->pricing_id = $request->pricing_id;
         $user->save();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('message', 'Succesfully Created');
     }
 
     public function show(User $user)
@@ -60,12 +61,13 @@ class UserController extends Controller
         $user->email_verified_at = $request->email_verified_at;
         $user->password = $request->password;
         $user->role_id = $request->role_id;
+        $user->pricing_id = $request->pricing_id;
         $user->save();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('message', 'Succesfully Updated');
     }
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('message', 'Succesfully Deleted');
     }
 }
