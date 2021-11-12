@@ -22,7 +22,7 @@
           <th scope="col">Time</th>
           <th scope="col">Tags</th>
           <th scope="col">Category</th>
-          <th></th>
+          <th scope="col">trainer</th>
           <th scope="col">Actions</th>
       </tr>
   </thead>
@@ -35,16 +35,16 @@
       <td>{{$item->name}}</td>
       <td>{{$item->time}}</td>
       <td>
-        
-        
-        
         @foreach ($item->tags as $tag)
         #{{$tag->name}}
         <br>
-        
         @endforeach
       </td>
+
       <td>{{$item->categories->name}}</td>
+      <td>{{$item->trainer->name}}</td>
+
+      
       
         <td><a class="btn btn-warning" href="{{route('classe.edit', $item->id)}}">Edit classe</a> </td> 
         <td><a href="{{route("classe.show", $item->id)}}" class="btn btn-warning">Show</a></td>

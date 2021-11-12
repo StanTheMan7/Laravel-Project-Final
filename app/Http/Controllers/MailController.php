@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Email;
 use App\Models\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,33 +18,38 @@ class MailController extends Controller
     public function index()
     {
         $mail = Mail::all()->sortBy('read');
+        
         return view('pages.mailBox', compact('mail'));
     }
-
-    
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Mail  $mail
      * @return \Illuminate\Http\Response
      */
-
-
+    
+    
     public function store(Request $request){
         request()->validate([
             'name'=>['required'],
             'email'=>['required'],
             'subject'=>['required'],
         ]);
-            $mail = new Mail();
-            $mail->name = $request->name;
-            $mail->email = $request->email;
-            $mail->subject = $request->subject;
-            $mail->read = 0;
-            $mail->save();
-            return redirect()->back()->with('message', 'Succesfully Created');
-    }
-    /**
+        $mail = new Mail();
+        $mail->name = $request->name;
+        $mail->email = $request->email;
+        $mail->subject = $request->subject;
+        $mail->read = 0;
+        $mail->save();
+        // $details = [
+        //     'name'=> $request->name,
+        //     'email'=> $request->email,
+        //     'subject'=> $request->subject
+        // ];
+        FacadesMail::to('sts.graur@gmail.com')->send(new Email($mail));
+        return redirect()->back()->with('message', 'Succesfully Created');
+        }
+        /**
      * Display the specified resource.
      *
      * @param  \App\Models\Email  $email

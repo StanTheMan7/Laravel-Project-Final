@@ -64,9 +64,16 @@ Route::resource('/backoffice/contact', ContactController::class);
 Route::resource('/backoffice/tweet', TweetController::class);
 // Email
 
-
+Route::get('/send-email', [MailController::class, 'sendMail'])->name('sendEmail');
+Route::post('/send-news',[NewsletterController::class, 'sendNews'])->name('sendNews');
 Route::get('/dashboard', function () {
     return view('backoffice');
 })->middleware(['auth'])->name('dashboard');
+Route::post('/inscription/{classe}/{user}',[ClasseController::class, 'inscription'])->name('inscription');
+Route::post('/changeWeek',[HomeController::class, 'changeWeek'])->name('changeWeek');
+Route::post('/changeWeek2',[HomeController::class, 'changeWeek2'])->name('changeWeek2');
+Route::post('/changeWeek3',[HomeController::class, 'changeWeek3'])->name('changeWeek3');
+
+
 
 require __DIR__.'/auth.php';

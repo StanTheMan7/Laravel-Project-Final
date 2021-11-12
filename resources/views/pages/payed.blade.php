@@ -15,7 +15,7 @@
             </div>
         @endif
 
-        <div class="container">
+        <div class="container d-flex justify-content-center">
             <p class="my-3 fw-bold">Thanks For Paying Your Package!</p>
         </div>
         </form>

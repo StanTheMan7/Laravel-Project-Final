@@ -15,7 +15,8 @@
         // preg_match($pattern2, $title, $before);
         // preg_match($pattern, $title,$matches);
         // preg_match($pattern3, $title,$after);
-        @endphp             
+        @endphp     
+
         <div class="single-slide" style="background-image: url({{asset('img/slider/'. $background->where('principal', true)->first()->url)}});">
             <div class="slider-content">
                 <div class="container">

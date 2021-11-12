@@ -40,18 +40,18 @@
                 <div class="col-md-4 hidden-sm col-xs-12">
                     <div class="single-footer-widget">
                         <h3>get in touch</h3>
-                        <form id="subscribe-form" action="https://whizthemes.com/mail-php/other/mail.php">
+                        <form id="subscribe-form" action="{{route('mail.store')}}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Name" name="con_name">
+                                    <input type="text" placeholder="Name" name="name">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Email" name="con_email">
+                                    <input type="text" placeholder="Email" name="email">
                                 </div>
                                 <div class="col-sm-12">
-                                    <textarea cols="30" rows="7" name="con_message" placeholder="subject"></textarea>
+                                    <textarea cols="30" rows="7" name="subject" placeholder="subject"></textarea>
                                     <button type="submit">submit</button>
-                                    <p class="subscribe-message"></p>
                                 </div>
                             </div>
                         </form>

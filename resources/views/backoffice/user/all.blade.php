@@ -22,6 +22,7 @@
           <th scope="col">Email</th>
           <th scope="col">Password</th>
           <th scope="col">Role_id</th>
+          <th scope="col">Pricing_id</th>
           <th scope="col">Actions</th>
       </tr>
   </thead>
@@ -34,6 +35,8 @@
       <td>{{$item->email}}</td>
       <td>{{$item->password}}</td>
       <td>{{$item->role_id}}</td>
+      <td>{{$item->pricing_id}}</td>
+
     <td><a class="btn btn-warning" href="{{route('user.edit', $item->id)}}">Edit user</a> </td> 
     <td><a href="{{route("user.show", $item->id)}}" class="btn btn-warning">Show</a></td>
     <td>

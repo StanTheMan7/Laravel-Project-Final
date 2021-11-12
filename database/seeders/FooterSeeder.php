@@ -21,7 +21,7 @@ class FooterSeeder extends Seeder
             'icon3'=>'zmdi zmdi-home',
             'email'=>'username@gmail.com',
             'phone'=>'+(60 256 24857)',
-            'address'=>'Your Address Here',
+            'address'=>'Chausse de Wavre 1493 Auderghem',
             'copyright'=>'Copyright © Hastech 2017. All Rights Reserved.',
         ]);
     }

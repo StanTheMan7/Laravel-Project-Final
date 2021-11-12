@@ -29,6 +29,7 @@
           <th scope="col">Link 2</th>
           <th scope="col">Link 3</th>
           <th scope="col">Link 4</th>
+          <th scope="col">Role</th>
           <th scope="col">Actions</th>
       </tr>
   </thead>
@@ -47,6 +48,8 @@
       <td>{{$item->link2}}</td>
       <td>{{$item->link3}}</td>
       <td>{{$item->link4}}</td>
+      <td>{{$item->role_id}}</td>
+
     <td><a class="btn btn-warning" href="{{route('trainer.edit', $item->id)}}">Edit Trainer</a> </td> 
     <td><a href="{{route("trainer.show", $item->id)}}" class="btn btn-warning">Show</a></td>
     <td>

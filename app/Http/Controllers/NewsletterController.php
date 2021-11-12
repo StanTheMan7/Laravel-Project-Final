@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailNews;
 use App\Models\Newsletter;
 use App\Models\Title;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class NewsletterController extends Controller
 {
@@ -18,6 +20,14 @@ class NewsletterController extends Controller
 
         $newsletter = Newsletter::all();
         return view('backoffice.newsletter.all', compact('newsletter'));
+    }
+    public function sendNews(Request $request)
+    {
+        $contentMail = [
+            'email'=> $request->email
+        ];
+    Mail::to($contentMail['email'])->send(new EmailNews($contentMail));
+        return redirect()->back();
     }
 
     /**

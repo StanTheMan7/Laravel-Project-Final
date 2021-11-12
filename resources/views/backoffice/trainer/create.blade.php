@@ -69,7 +69,12 @@
                 <option value="https://dribbble.com/">Link4 Dribble</option>
                 <option value="https://www.pinterest.com/">Link4 Printerest</option>
             </select>
-            
+            <label class="my-3 fw-bold" >Role: </label>
+                         <select  name="role_id">
+                            @foreach ($roles as $role)
+                                <option value={{$role->id}}> {{$role->name}}</option>
+                            @endforeach
+                        </select>
             <input type="text" name="button" placeholder="button" value="{{ old('button') }}">
 
             <button class="btn btn-success" type="submit">Validate</button>

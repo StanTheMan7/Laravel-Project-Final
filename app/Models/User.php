@@ -49,5 +49,7 @@ class User extends Authenticatable
     public function pricing(){
         return $this->belongsTo(Pricing::class , 'pricing_id');
     }
-    
+    public function classes(){
+        return $this->belongsToMany(Classe::class, 'user_classes');
+    }
 }

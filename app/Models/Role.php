@@ -12,10 +12,11 @@ class Role extends Model
     protected $fillable =  [
         'name'
     ];
+
     public function users(){
         return $this->hasMany(User::class);
     }
     public function trainers(){
-        return $this->hasMany(Trainer::class, 'role_id');
+        return $this->belongsTo(Trainer::class, 'role_id');
     }
 }

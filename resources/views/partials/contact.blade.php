@@ -17,7 +17,6 @@
                             <div class="col-sm-12">
                                 <textarea class="mb-30" cols="30" rows="7" name="subject" placeholder="{{$contact[0]->placeholdersubject}}"></textarea>
                                 <button type="submit">submit</button></a>
-                                <p class="form-message"></p>
                             </div>
                         </form>
                     </div>

@@ -25,7 +25,7 @@ class CreateTrainersTable extends Migration
             $table->string('link2');
             $table->string('link3');
             $table->string('link4');
-            $table->foreignId('role_id');
+            $table->foreignId('role_id')->constrained('roles', 'id');
             $table->timestamps();
         });
     }

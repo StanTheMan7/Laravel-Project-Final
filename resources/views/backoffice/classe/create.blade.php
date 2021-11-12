@@ -22,7 +22,15 @@
             <input type="file" name="url" placeholder="url" value="{{ old('url') }}">
             <input type="text" name="title" placeholder="title" value="{{ old('title') }}">
             <input type="text" name="name" placeholder="name" value="{{ old('name') }}">
-            <input type="text" name="time" placeholder="time" value="{{ old('time') }}">
+            <input type="date" name="date" placeholder="date" value="{{ old('date') }}">
+            <label class="my-3 fw-bold" for="time">Time: </label>
+            <select  class="selectpicker" name="time" >
+                    <option>8 AM - 12 PM</option>
+                    <option>12 PM - 3 PM</option>
+                    <option>3 PM - 6 PM</option>
+                    <option>6 PM - 8 PM</option>
+            </select>
+            <br>
 
             <div class="container">  
             
@@ -32,13 +40,27 @@
                                 <option value={{$tag->id}}> {{$tag->name}}</option>
                             @endforeach
                         </select>
+                        <br>
                         <label class="my-3 fw-bold" for="categories">Category: </label>
                         <select  name="category_id[]">
                             @foreach ($categories as $category)
                                 <option value={{$category->id}}> {{$category->name}}</option>
                             @endforeach
+                        </select> 
+                        <br>
+                        <label class="my-3 fw-bold" for="trainers">Trainers: </label>
+                         <select  name="trainer_id[]">
+                            @foreach ($trainers as $trainer)
+                                <option value={{$trainer->id}}> {{$trainer->name}}</option>
+                            @endforeach
                         </select>
-                 
+                        <br>
+                        <select name="status_id" id="">
+                            @foreach ($status as $item)
+                                <option value="{{ $item->id }}">{{ $item->priority}}</option>
+                            @endforeach
+                        </select>
+                        <br>
                     	
                 
                 <button class="btn btn-success" type="submit">Validate</button>

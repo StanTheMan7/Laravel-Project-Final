@@ -19,7 +19,11 @@ class CreateClassesTable extends Migration
             $table->string('title');
             $table->string('name');
             $table->foreignId('category_id')->constrained();
+            $table->foreignId('trainer_id')->constrained('trainers', 'id');
+            $table->integer('nrMax');
+            $table->foreignId('status_id')->constrained('statuses', 'id');
             $table->string('time');
+            $table->date('date');
             $table->timestamps();
         });
     }

@@ -20,8 +20,12 @@ class Trainer extends Model
         'link2',
         'link3',
         'link4',
+        'role_id'
     ];
-    public function roles(){
-        return $this->belongsTo(Trainer::class, 'role_id');
+    public function role(){
+        return $this->hasMany(Trainer::class, 'role_id');
+    }
+    public function classe(){
+        return $this->hasOne(Classe::class);
     }
 }

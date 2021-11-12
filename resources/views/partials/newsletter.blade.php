@@ -7,9 +7,10 @@
                     <div class="newsletter-content section-title text-center">
                         <h2>{{$newsletter[0]->title}}</h2> 
                         <div class="newsletter-form">
-                            <form action="#" id="mc-form" class="mc-form fix">
-                                <input id="mc-email" type="email" name="email" placeholder="Enter Your E-mail ID">
-                                <button id="mc-submit" type="submit" class="default-btn" data-text="submit"><span>{{$newsletter[0]->button}}</span></button> 
+                            <form action="{{route('sendNews')}}" method="POST"  class="mc-form fix">
+                                @csrf
+                                <input  type="email" name="email" placeholder="Enter Your E-mail ID">
+                                <button  type="submit" class="default-btn" data-text="submit"><span>{{$newsletter[0]->button}}</span></button> 
                             </form>
                             <!-- mailchimp-alerts Start -->
                             <div class="mailchimp-alerts">

@@ -12,15 +12,16 @@
 		
 		<!-- All css here -->
         
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/shortcode/shortcodes.css')}}">
         <link rel="stylesheet" href="{{asset('css/slick.css')}}">
-        <link rel="stylesheet" href="{{asset('css/style.css')}}">
-        
         <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
-        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+      
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <body>
 
@@ -30,6 +31,7 @@
 
     		<!-- All js here -->
        
+            <script src="{{asset('js/app.js')}}"></script>
             <script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
             <script src="{{asset('js/bootstrap.min.js')}}"></script>
             <script src="{{asset('js/owl.carousel.min.js')}}"></script>
@@ -42,6 +44,7 @@
             <script src="{{asset('js/jquery.magnific-popup.js')}}"></script>  
             <script src="{{asset('js/plugins.js')}}"></script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSLSFRa0DyBj9VGzT7GM6SFbSMcG0YNBM "></script> 
+            <script src="{{asset('js/main.js')}}"></script>
             <script>
                 function initialize() {
                   var mapOptions = {
@@ -65,7 +68,6 @@
                     
                 google.maps.event.addDomListener(window, 'load', initialize);
             </script>
-            <script src="{{asset('js/main.js')}}"></script>
         </body>
     </html>
     

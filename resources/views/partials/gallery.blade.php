@@ -24,7 +24,7 @@
         <div class="row">
             <div class="grid" style="position: relative; height: 390px;">
                 @foreach ($gallery->shuffle() as $item)
-                    <div class="col-md-4 col-sm-4 col-xs-12 grid-item " >
+                    <div class="col-md-4 col-sm-4 col-xs-12 grid-item" >
                         <div class="portfolio-img single-img">
                                     <img src="{{asset('img/portfolio/' . $item->url)}}" alt="project">
                             <div class="gallery-icon">

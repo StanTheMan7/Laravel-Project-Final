@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -25,8 +26,10 @@ class TrainerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('backoffice.trainer.create');
+    {   
+        $trainers = Trainer::all();
+        $roles = Role::all();
+        return view('backoffice.trainer.create', compact('roles', 'trainers'));
     }
 
     /**
@@ -47,7 +50,7 @@ class TrainerController extends Controller
             'link1'=>['required'],
             'link2'=>['required'],
             'link3'=>['required'],
-            'link4'=>['required']
+            'link4'=>['required'],
         ]);
         $trainer = new Trainer();
         $trainer->url = $request->file('url')->hashName();
@@ -61,6 +64,7 @@ class TrainerController extends Controller
         $trainer->link2 = $request->link2;
         $trainer->link3 = $request->link3;
         $trainer->link4 = $request->link4;
+        $trainer->role_id = $request->role_id;
         $trainer->save();
         return redirect()->route('trainer.index')->with('message', 'Succesfully Created');
     }
@@ -105,7 +109,7 @@ class TrainerController extends Controller
             'link1'=>['required'],
             'link2'=>['required'],
             'link3'=>['required'],
-            'link4'=>['required']
+            'link4'=>['required'],
         ]);
         if($request->file('url') !== null){
 
