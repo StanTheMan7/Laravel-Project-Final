@@ -16,6 +16,7 @@ class TrainerController extends Controller
      */
     public function index()
     {
+        $this->authorize('manager');
         $trainer =  Trainer::all();
         return view('backoffice.trainer.all', compact('trainer'));
     }
@@ -26,7 +27,8 @@ class TrainerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {  
+        $this->authorize('manager');
         $trainers = Trainer::all();
         $roles = Role::all();
         return view('backoffice.trainer.create', compact('roles', 'trainers'));
@@ -77,6 +79,7 @@ class TrainerController extends Controller
      */
     public function show(Trainer $trainer)
     {
+        $this->authorize('manager');
         return view('backoffice.trainer.show',compact('trainer'));
     }
 
@@ -88,6 +91,7 @@ class TrainerController extends Controller
      */
     public function edit(Trainer $trainer)
     {
+        $this->authorize('manager');
         return view('backoffice.trainer.edit',compact('trainer'));
     }
 

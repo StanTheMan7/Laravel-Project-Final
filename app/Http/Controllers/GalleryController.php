@@ -32,6 +32,7 @@ class GalleryController extends Controller
     }
 
     public function index(){
+        $this->authorize('manager');
         $gallery = Gallery::all();
         return view('backoffice.gallery.all', compact('gallery'));
     }
@@ -42,6 +43,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
+        $this->authorize('manager');
         return view('backoffice.gallery.create');
     }
 
@@ -71,6 +73,7 @@ class GalleryController extends Controller
      */
     public function show(Gallery $gallery)
     {
+        $this->authorize('manager');
         return view('backoffice.gallery.show', compact('gallery'));
     }
 
@@ -82,6 +85,7 @@ class GalleryController extends Controller
      */
     public function edit(Gallery $gallery)
     {
+        $this->authorize('manager');
         return view('backoffice.gallery.edit', compact('gallery'));
     }
 

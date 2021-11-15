@@ -17,7 +17,7 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-
+        $this->authorize('manager');
         $newsletter = Newsletter::all();
         return view('backoffice.newsletter.all', compact('newsletter'));
     }
@@ -59,6 +59,7 @@ class NewsletterController extends Controller
      */
     public function show(Newsletter $newsletter)
     {
+        $this->authorize('manager');
         return view('backoffice.newsletter.show', compact('newsletter'));
     }
 
@@ -70,6 +71,7 @@ class NewsletterController extends Controller
      */
     public function edit(Newsletter $newsletter)
     {
+        $this->authorize('manager');
         return view('backoffice.newsletter.edit', compact('newsletter'));
     }
 

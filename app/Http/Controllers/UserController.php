@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index(){
+        $this->authorize('manager');
         $user = User::all();
         return view('backoffice.user.all', compact('user'));
     }   
 
     public function create(){
+        $this->authorize('admin');
         $role = Role::all();
         return view('backoffice.user.create', compact('role'));
     }  
@@ -40,11 +42,13 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        $this->authorize('admin');
         return view('backoffice.user.show', compact('user'));
     }
 
     public function edit(User $user)
     {
+        $this->authorize('admin');
         return view('backoffice.user.edit', compact('user'));
     }
 

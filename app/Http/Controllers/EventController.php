@@ -14,7 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {   
-
+        $this->authorize('manager');
         $event = Event::all();
         return view('backoffice.event.all', compact('event'));
     }
@@ -26,6 +26,7 @@ class EventController extends Controller
      */
     public function create()
     {
+        $this->authorize('manager');
         return view('backoffice.event.create');
     }
 
@@ -61,6 +62,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        $this->authorize('manager');
         return view('backoffice.event.show', compact('event'));
     }
 
@@ -72,6 +74,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
+        $this->authorize('manager');
         return view('backoffice.event.edit', compact('event'));
     }
 

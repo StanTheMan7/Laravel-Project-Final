@@ -35,6 +35,7 @@ class AboutController extends Controller
     
     public function index()
     {
+        $this->authorize('manager');
         $about = About::all();
         return view('backoffice.about.all', compact('about'));
     }
@@ -68,7 +69,8 @@ class AboutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(About $about)
-    {
+    {   
+        $this->authorize('manager');
         return view('backoffice.about.show', compact('about'));
     }
 
@@ -80,6 +82,7 @@ class AboutController extends Controller
      */
     public function edit(About $about)
     {
+        $this->authorize('manager');
         return view('backoffice.about.edit', compact('about'));
     }
 

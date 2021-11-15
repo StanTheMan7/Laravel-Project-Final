@@ -17,6 +17,7 @@ class FooterController extends Controller
      */
     public function index()
     {
+        $this->authorize('manager');
         $tweet = Tweet::all();
         $footer = Footer::all();
         return view('backoffice.footer.all', compact('footer','tweet'));
@@ -51,6 +52,7 @@ class FooterController extends Controller
      */
     public function show(Footer $footer)
     {
+        $this->authorize('manager');
         $tweet = Tweet::all();
         return view('backoffice.footer.show', compact('footer','tweet'));
     }
@@ -63,6 +65,7 @@ class FooterController extends Controller
      */
     public function edit(Footer $footer)
     {
+        $this->authorize('manager');
         $tweet = Tweet::all();
         return view('backoffice.footer.edit', compact('footer','tweet'));
     }

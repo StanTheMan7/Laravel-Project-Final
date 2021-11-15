@@ -31,6 +31,7 @@ class ContactController extends Controller
         return view('pages.contact', compact( 'contact', 'header', 'client', 'titleDesc', 'newsletter','footer', 'tweet'));
     }
     public function index(){
+        $this->authorize('manager');
         $contact = Contact::all();
         return view('backoffice.contact.all', compact('contact'));
     }
@@ -64,6 +65,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
+        $this->authorize('manager');
         return view('backoffice.contact.show', compact('contact'));
     }
 
@@ -75,6 +77,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
+        $this->authorize('manager');
         return view('backoffice.contact.edit', compact('contact'));
     }
 

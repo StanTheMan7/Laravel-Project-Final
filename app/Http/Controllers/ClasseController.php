@@ -48,6 +48,7 @@ class ClasseController extends Controller
     }
      
     public function index(){
+        $this->authorize('manager');
         $classe = Classe::all();
         $tags = Tag::all();
         $classe_tag = ClasseTag::all();
@@ -63,6 +64,7 @@ class ClasseController extends Controller
      */
     public function create()
     {
+        $this->authorize('manager');
         $classe = Classe::all();
         $tags = Tag::all();
         $classe_tag = ClasseTag::all();
@@ -145,7 +147,7 @@ class ClasseController extends Controller
      */
     public function show(Classe $classe)
     {
-       
+        $this->authorize('manager');
         $user = User::all();
         $classesFromDB = DB::table('user_classes')
                         ->select('classe_id')
@@ -162,6 +164,7 @@ class ClasseController extends Controller
      */
     public function edit(Classe $classe)
     {
+        $this->authorize('manager');
         return view('backoffice.classe.edit', compact('classe'));
     }
 

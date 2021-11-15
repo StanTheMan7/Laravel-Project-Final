@@ -119,18 +119,20 @@
                                 </div>
                             </div>
                         @endif
-                        <form style="margin-top: 20px; text-align: center"
-                            action="{{ route('inscription', ['classe' => $item->id, 'user' => $item->id]) }}"
-                            method="post">
-                            @csrf
-                            @if ($disable)
-                            <button disabled class="btn"
-                            style="font-size: 12px; background-color: #5FC7AE;">Inscription</button>
-                            @else
-                            <button class="btn"
-                                style="font-size: 12px; background-color: #5FC7AE;">Inscription</button>
-                            @endif
-                        </form>
+                        @auth
+                                <form style="margin-top: 20px; text-align: center"
+                                    action="{{ route('inscription', ['classe' => $item->id, 'user' => Auth::user()->id]) }}"
+                                    method="post">
+                                    @csrf
+                                    @if ($disable)
+                                    <button disabled class="btn"
+                                    style="font-size: 12px; background-color: #5FC7AE;">Inscription</button>
+                                    @else
+                                    <button class="btn"
+                                        style="font-size: 12px; background-color: #5FC7AE;">Inscription</button>
+                                    @endif
+                                </form>
+                        @endauth
                     </div>
             @endforeach
         </div>

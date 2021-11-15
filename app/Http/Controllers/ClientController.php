@@ -15,6 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $this->authorize('manager');
         $client = Client::all();
         return view('backoffice.client.all',compact('client'));
     }
@@ -26,6 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
+        $this->authorize('manager');
         return view('backoffice.client.create');
     }
 
@@ -60,6 +62,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
+        $this->authorize('manager');
         return view('backoffice.client.show',compact('client'));
     }
 
@@ -71,6 +74,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
+        $this->authorize('manager');
         return view('backoffice.client.edit',compact('client'));
     }
 

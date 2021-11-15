@@ -12,8 +12,8 @@
     <p><b>Trainer : </b><i>{{$classe->trainer_id}}</i></p>
     <p><b>Nr max: </b><i>{{$classe->nrMax}}</i></p>
     <p><b>Status: </b><i>{{$classe->status_id}}</i></p>
-    
     <p><b>Inscriptions: </b><i>{{$classesFromDB->count()}}/{{$classe->nrMax}}</i></p>
+    
     
     </div>
 </div>

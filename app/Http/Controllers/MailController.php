@@ -17,6 +17,7 @@ class MailController extends Controller
      */
     public function index()
     {
+        $this->authorize('manager');
         $mail = Mail::all()->sortBy('read');
         
         return view('pages.mailBox', compact('mail'));
@@ -57,16 +58,13 @@ class MailController extends Controller
      */
     public function show(Mail $mail)
     {
+        $this->authorize('manager');
         $mail->read = 1;
         $mail->save();
         return view('backoffice.mail.showEmail',compact('mail'));
     }
 
-    // public function showbetter(Mail $mail)
-    // {
 
-    //     return view('email',compact('mail'));
-    // }
 
     /**
      * Remove the specified resource from storage.

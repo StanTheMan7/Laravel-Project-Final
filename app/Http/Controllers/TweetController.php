@@ -14,6 +14,7 @@ class TweetController extends Controller
      */
     public function index()
     {
+        $this->authorize('manager');
         $tweet = Tweet::all();
         return view('backoffice.tweet.all',compact('tweet'));
     }
@@ -58,6 +59,7 @@ class TweetController extends Controller
      */
     public function edit(Tweet $tweet)
     {
+        $this->authorize('manager');
         return view('backoffice.tweet.edit', compact('tweet'));
     }
 

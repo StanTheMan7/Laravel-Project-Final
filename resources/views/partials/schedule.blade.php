@@ -127,27 +127,29 @@
             </div>
         </div>
 
+        <div class="container d-flex justify-content-between">
         <form style="margin-top: 20px; text-align: center"
                             action="{{ route('changeWeek') }}"
                             method="post">
                             @csrf                            
                             <button name='action' type="submit" name='button1' class="btn"
                             style="font-size: 12px; background-color: #5FC7AE;">Week 1</button>
-                        </form>
+        </form>
         <form style="margin-top: 20px; text-align: center"
                             action="{{ route('changeWeek2') }}"
                             method="post">
                             @csrf                            
                             <button name='action' type="submit" name='button2' class="btn"
                             style="font-size: 12px; background-color: #5FC7AE;">Week 2</button>
-                        </form>
+        </form>
         <form style="margin-top: 20px; text-align: center"
                             action="{{ route('changeWeek3') }}"
                             method="post">
                             @csrf                            
                             <button name='action' type="submit" name='button3' class="btn"
                             style="font-size: 12px; background-color: #5FC7AE;">Week 3</button>
-                        </form>
+         </form>
+        </div>
 
         
 

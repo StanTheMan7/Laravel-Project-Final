@@ -15,6 +15,7 @@ class HeaderController extends Controller
      */
     public function index()
     {
+        $this->authorize('manager');
         $header = Header::all();
         return view('backoffice.header.all', compact('header'));
     }
@@ -48,6 +49,7 @@ class HeaderController extends Controller
      */
     public function show(Header $header)
     {
+        $this->authorize('manager');
         return view('backoffice.header.show',compact('header'));
     }
 
@@ -59,6 +61,7 @@ class HeaderController extends Controller
      */
     public function edit(Header $header)
     {
+        $this->authorize('manager');
         return view('backoffice.header.edit',compact('header'));
     }
 

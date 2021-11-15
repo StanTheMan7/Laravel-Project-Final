@@ -22,6 +22,7 @@ class PricingController extends Controller
      */
     public function index()
     {
+        $this->authorize('manager');
         $pricing = Pricing::all();
         return view('backoffice.pricing.all', compact('pricing'));
     }
@@ -90,6 +91,7 @@ class PricingController extends Controller
      */
     public function show(Pricing $pricing)
     {
+        $this->authorize('manager');
         return view('backoffice.pricing.show', compact('pricing'));
     }
 
@@ -101,6 +103,7 @@ class PricingController extends Controller
      */
     public function edit(Pricing $pricing)
     {
+        $this->authorize('manager');
         return view('backoffice.pricing.edit', compact('pricing'));
     }
 

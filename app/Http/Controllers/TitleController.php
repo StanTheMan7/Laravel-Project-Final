@@ -14,6 +14,7 @@ class TitleController extends Controller
      */
     public function index()
     {
+        $this->authorize('manager');
         $titleDesc  = Title::all();
         return view('backoffice.titleDesc.all',compact('titleDesc'));
     }
@@ -47,6 +48,7 @@ class TitleController extends Controller
      */
     public function show(Title $title)
     {
+        $this->authorize('manager');
         return view('backoffice.titleDesc.show',compact('title'));
     }
 
@@ -58,6 +60,7 @@ class TitleController extends Controller
      */
     public function edit(Title $title)
     {
+        $this->authorize('manager');
         return view('backoffice.titleDesc.edit',compact('title'));
     }
 

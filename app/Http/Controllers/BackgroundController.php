@@ -15,6 +15,7 @@ class BackgroundController extends Controller
      */
     public function index()
     { 
+        $this->authorize('manager');
         $background = Background::all();
         return view('backoffice.background.all', compact('background')); 
     }
@@ -26,6 +27,7 @@ class BackgroundController extends Controller
      */
     public function create()
     {
+        $this->authorize('manager');
         return view('backoffice.background.create');
     }
 
@@ -64,6 +66,7 @@ class BackgroundController extends Controller
      */
     public function show(Background $background)
     {
+        $this->authorize('manager');
         return view('backoffice.background.show', compact('background'));
     }
 
@@ -75,6 +78,7 @@ class BackgroundController extends Controller
      */
     public function edit(Background $background)
     {
+        $this->authorize('manager');
         return view('backoffice.background.edit', compact('background'));
     }
 
