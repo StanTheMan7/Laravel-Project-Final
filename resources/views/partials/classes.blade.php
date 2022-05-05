@@ -13,8 +13,8 @@
 
                         <h2>{{ $before }}</h2>
                     @else
-                        <h2>{{ $before }} <span
-                                style="color: rgb(95, 199,174)">{{ $between }}</span>{{ $after }}</h2>
+                        <h2>{{ $before }} <span style="color: rgb(95, 199,174)">{{ $between }}</span>{{ $after }}</h2>
+                                
                     @endif
                     <p>{{ $titleDesc[0]->description }}</p>
                 </div>
