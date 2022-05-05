@@ -11,6 +11,7 @@ use App\Models\Newsletter;
 use App\Models\Title;
 use App\Models\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
@@ -30,7 +31,8 @@ class AboutController extends Controller
         $newsletter = Newsletter::all();
         $footer = Footer::all();
         $tweet = Tweet::all();
-        return view('pages.about', compact('about', 'header', 'client', 'titleDesc', 'event','newsletter','footer','tweet'));
+        $principalEvent = DB::table('events')->orderBy('principal', 'desc')->paginate(1);
+        return view('pages.about', compact('about', 'header', 'client', 'titleDesc', 'event','newsletter','footer','tweet', 'principalEvent'));
     }
     
     public function index()

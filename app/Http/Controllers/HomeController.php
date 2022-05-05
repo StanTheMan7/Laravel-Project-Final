@@ -68,6 +68,7 @@ class HomeController extends Controller
                             ->selectRaw('count(user_id) as  users , classe_id')
                             ->groupBy('classe_id')
                             ->get();
+                     
 
         $allClasses = DB::table('classes')
                         ->select('id', 'title', 'time', 'date','name')
