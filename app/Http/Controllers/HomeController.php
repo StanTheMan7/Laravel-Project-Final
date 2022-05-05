@@ -74,7 +74,7 @@ class HomeController extends Controller
                         ->select('id', 'title', 'time', 'date','name')
                         ->get();
                         
-                        return view('pages.index', compact('weekStartDate','weekEndDate','allClasses','allInscriptions',"user_classes",'principalEvent','header','titleDesc', 'about', 'classe',  'gallery', 'contact', 'background', 'trainer', 'event', 'pricing', 'client', 'footer', 'tweet', 'newsletter', 'tags', 'classe_tag','classePriority', 'filtered'));
+                        return view('pages.index', compact('weekStartDate','weekEndDate','allClasses','allInscriptions',"user_classes",'principalEvent','header','titleDesc', 'about', 'classe',  'gallery', 'contact', 'background', 'trainer', 'event', 'pricing', 'client', 'footer', 'tweet', 'newsletter', 'tags', 'classe_tag','classePriority', 'filtered','header'));
     }
 
     public function changeWeek()
