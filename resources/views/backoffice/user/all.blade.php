@@ -9,10 +9,11 @@
                 {{ session()->get('message') }}
             </div>
     @endif
-    
+  @can('admin')
   <div style="display: flex; justify-content:center;">
     <a class="btn btn-info" href="{{route("user.create")}}">Create User</a>
-</div>
+  </div>
+  @endcan
 
 <table class="table">
   <thead>
@@ -36,16 +37,17 @@
       <td>{{$item->password}}</td>
       <td>{{$item->role_id}}</td>
       <td>{{$item->pricing_id}}</td>
-
-    <td><a class="btn btn-warning" href="{{route('user.edit', $item->id)}}">Edit user</a> </td> 
-    <td><a href="{{route("user.show", $item->id)}}" class="btn btn-warning">Show</a></td>
-    <td>
-        <form action="{{route('user.destroy', $item->id)}}" method="post">
-          @csrf
-          @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
+      @can('admin')
+      <td><a class="btn btn-warning" href="{{route('user.edit', $item->id)}}">Edit user</a> </td> 
+      <td><a href="{{route("user.show", $item->id)}}" class="btn btn-warning">Show</a></td>
+      <td>
+          <form action="{{route('user.destroy', $item->id)}}" method="post">
+            @csrf
+            @method('DELETE')
+                      <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
       </td> 
+      @endcan
     </tr>
     @endforeach
   </tbody>

@@ -33,6 +33,7 @@ class ClasseController extends Controller
      */
     public function indexFront()
     {
+        
         $classe = Classe::all();
         $header = Header::all();
         $client = Client::all();
@@ -43,8 +44,24 @@ class ClasseController extends Controller
         $pricing  = Pricing::all();
         $classePriority = DB::table('classes')->where("status_id",1)->limit(3)->get();
         $filtered = $classe->sortby("status_id");
-        
-        return view('pages.classes' , compact('classe', 'header', 'client', 'titleDesc', 'footer', 'tweet', 'pricing','newsletter','classePriority','filtered'));
+        $allInscriptions = DB::table('user_classes')
+                                -> selectRaw('count(user_id) as  users , classe_id')
+                                ->groupBy('classe_id')
+                                ->get();
+        $currentDate = date("Y/m/d");
+        $weekStartDate = '';
+        $weekEndDate = '';
+        $day = date('w', strtotime($currentDate));
+        $daystosbutract = $day - 1;
+        $stringdays = "-" . strval($daystosbutract) . " days";
+        $weekStartDate = date("Y/m/d", strtotime($stringdays, strtotime($currentDate)));
+        $stringdays = '6 days';
+        $weekEndDate = date("Y/m/d", strtotime($stringdays, strtotime($weekStartDate)));
+        $allClasses = DB::table('classes')
+            ->select('id', 'title', 'time', 'date', 'name')
+            ->get();
+                        
+        return view('pages.classes' , compact('classe', 'header', 'client', 'titleDesc', 'footer', 'tweet', 'pricing','newsletter','classePriority','filtered','allInscriptions','weekStartDate', 'weekEndDate', 'allClasses'));
     }
      
     public function index(){
